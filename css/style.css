@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky; /* Rende il menu fisso in alto */
+    top: 0;
+    z-index: 1000;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+header ul li {
+    margin-left: 20px;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    position: relative; /* Necessario per posizionare il testo sopra l'immagine */
+    text-align: center;
+    color: white;
+}
+
+.hero img {
+    display: block; /* Rimuove spazio sotto l'immagine */
+}
+
+.hero .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente per leggibilità */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+main section {
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.post-preview, .destination-card {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px #eee solid;
+    display: flex; /* Per allineare immagine e testo */
+    align-items: center; /* Per allineare verticalmente */
+    gap: 15px; /* Spazio tra immagine e testo */
+}
+
+.post-preview:last-child, .destination-card:last-child {
+    border-bottom: none;
+}
+
+.post-preview h3 a, .destination-card h3 a {
+    text-decoration: none;
+    color: #337ab7;
+}
+
+.post-preview h3 a:hover, .destination-card h3 a:hover {
+    text-decoration: underline;
+}
+
+.destination-category {
+    margin-bottom: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    margin-top: 30px;
+}
+
+/* Semplice responsività per il menu */
+@media (max-width: 768px) {
+    header nav {
+        flex-direction: column;
+    }
+    header ul {
+        margin-top: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+    header ul li {
+        margin: 5px 0;
+    }
+    main section {
+        width: 95%;
+    }
+    .post-preview, .destination-card {
+        flex-direction: column; /* Immagine sopra, testo sotto su schermi piccoli */
+        text-align: center;
+    }
+}
