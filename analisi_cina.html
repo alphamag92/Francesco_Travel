@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisi Voli Italia-Cina - Francesco Travels</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        /* Stili per le schede di navigazione interne alla dashboard */
+        .dashboard-nav-link {
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s, color 0.3s;
+            color: #475569; /* slate-600 */
+            font-weight: 600;
+        }
+        .dashboard-nav-link.active, .dashboard-nav-link:hover {
+            background-color: #e0f2fe; /* sky-100 */
+            color: #0c4a6e; /* sky-900 */
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .region-card {
+            border: 2px solid transparent;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .region-card.active, .region-card:hover {
+            border-color: #0ea5e9; /* sky-500 */
+            transform: translateY(-4px);
+        }
+        /* Stili per il menu di navigazione principale del sito */
+        .main-nav-header { background-color: #34495e; padding: 15px 0; text-align: center; }
+        .main-nav-header ul { list-style: none; padding: 0; margin: 0; display: inline-block; }
+        .main-nav-header ul li { display: inline-block; margin: 0 20px; }
+        .main-nav-header ul li a { color: #ecf0f1; font-weight: bold; font-size: 1.1rem; text-decoration: none; }
+        .main-nav-header ul li a:hover { text-decoration: underline; }
+        .secondary-header-title { text-align: center; padding: 20px 0 10px; background-color: #34495e; }
+        .site-title-link { font-size: 2rem; color: #ecf0f1; font-weight: bold; text-decoration: none; font-family: Arial, sans-serif; }
+        .site-title-link:hover { color: #ffffff; }
+        .site-footer { background-color: #2c3e50; color: #ecf0f1; text-align: center; padding: 25px 0; margin-top: 40px; font-family: Arial, sans-serif;}
+
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <header>
+        <div class="secondary-header-title">
+             <a href="index.html" class="site-title-link">Francesco Travels</a>
+        </div>
+        <nav class="main-nav-header">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="itinerari.html">Itinerari</a></li>
+                <li><a href="analisi.html">Analisi</a></li>
+                <li><a href="chi_sono.html">Chi sono</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <div class="bg-white shadow-sm rounded-lg mb-8">
+            <div class="px-4 sm:px-6 lg:px-8 pt-4">
+                <h1 class="text-2xl md:text-3xl font-bold text-slate-900 text-center">Dashboard Voli Italia-Cina</h1>
+            </div>
+            <nav class="flex flex-wrap items-center justify-center space-x-2 sm:space-x-4 p-3" id="dashboard-nav">
+                <a class="dashboard-nav-link active" data-tab="overview">Panoramica</a>
+                <a class="dashboard-nav-link" data-tab="seasonality">Stagionalità & Strategie</a>
+                <a class="dashboard-nav-link" data-tab="regional">Analisi Regionale</a>
+                <a class="dashboard-nav-link" data-tab="airlines">Confronto Compagnie</a>
+            </nav>
+        </div>
+
+        <div id="overview" class="tab-content active">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-slate-900">Panoramica del Mercato</h2>
+                <p class="mt-2 text-lg text-slate-600 max-w-3xl mx-auto">Uno sguardo d'insieme alle cifre chiave che caratterizzano i collegamenti aerei tra Italia e Cina.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
+                    <p class="text-sm font-semibold text-slate-500">Prezzo Minimo A/R</p>
+                    <p class="text-4xl font-extrabold text-slate-800 mt-1">da 300€</p>
+                    <p class="text-xs text-slate-400 mt-2">Valore registrato in bassa stagione</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
+                    <p class="text-sm font-semibold text-slate-500">Prezzo Medio A/R</p>
+                    <p class="text-4xl font-extrabold text-slate-800 mt-1">~1.127€</p>
+                    <p class="text-xs text-slate-400 mt-2">Media generale su tutte le rotte</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
+                    <p class="text-sm font-semibold text-slate-500">Un "Buon Affare"</p>
+                    <p class="text-4xl font-extrabold text-slate-800 mt-1">&lt; 951€</p>
+                    <p class="text-xs text-slate-400 mt-2">Soglia per un volo A/R competitivo</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
+                    <p class="text-sm font-semibold text-slate-500">Risparmio con Scalo</p>
+                    <p class="text-4xl font-extrabold text-slate-800 mt-1">fino al 37%</p>
+                    <p class="text-xs text-slate-400 mt-2">Potenziale rispetto a un volo diretto</p>
+                </div>
+            </div>
+             <div class="mt-12 bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold text-slate-900 mb-4 text-center">Voli Diretti vs. Scalo: Il Compromesso</h3>
+                 <p class="text-center text-slate-600 mb-6 max-w-4xl mx-auto">La scelta tra un volo diretto e uno con scalo dipende dal bilanciamento tra tempo e budget. I voli diretti, operati prevalentemente da compagnie cinesi, garantiscono rapidità, mentre gli scali, gestiti da un'ampia gamma di vettori, offrono un notevole potenziale di risparmio.</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                    <div class="text-center">
+                        <p class="text-5xl">✈️</p>
+                        <p class="font-bold text-lg mt-2">Volo Diretto</p>
+                        <p class="text-slate-500">10-12 ore</p>
+                        <p class="font-semibold text-sky-700">Più costoso</p>
+                    </div>
+                    <div class="text-2xl font-bold text-slate-400 hidden md:block">VS</div>
+                    <div class="text-center">
+                        <p class="text-5xl">🔄</p>
+                        <p class="font-bold text-lg mt-2">Volo con Scalo</p>
+                        <p class="text-slate-500">13-25+ ore</p>
+                        <p class="font-semibold text-teal-600">Più economico</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="seasonality" class="tab-content">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-slate-900">Stagionalità e Strategie di Prenotazione</h2>
+                <p class="mt-2 text-lg text-slate-600 max-w-3xl mx-auto">Comprendere le fluttuazioni stagionali dei prezzi è fondamentale per ottimizzare i costi del viaggio in Cina.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+                <h3 class="text-xl font-bold text-center mb-4">Andamento Prezzi Mensili (Stima A/R)</h3>
+                <div class="chart-container">
+                    <canvas id="seasonalChart"></canvas>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h4 class="font-bold text-lg text-slate-900">🗓️ Anticipo di Prenotazione</h4>
+                    <p class="mt-2 text-slate-600">Le fonti suggeriscono un anticipo variabile, ma un intervallo tra **1 e 3 mesi** prima della partenza è spesso un buon compromesso per trovare tariffe competitive, evitando i picchi di prezzo dell'ultimo minuto.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h4 class="font-bold text-lg text-slate-900">💡 Flessibilità è la Chiave</h4>
+                    <p class="mt-2 text-slate-600">Partire durante i **giorni feriali** (es. mercoledì) è spesso più economico del fine settimana. Usare alert di prezzo e confrontare diverse piattaforme online può rivelare le migliori offerte.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h4 class="font-bold text-lg text-slate-900">🚫 Evita i Periodi di Punta</h4>
+                    <p class="mt-2 text-slate-600">Le **Golden Weeks** (inizio Maggio e Ottobre) e il **Capodanno Cinese** (Gen/Feb) vedono un'impennata della domanda interna. Evitare queste date è essenziale per risparmiare e sfuggire a folle immense.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="regional" class="tab-content">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-slate-900">Analisi Interattiva per Regione</h2>
+                <p class="mt-2 text-lg text-slate-600 max-w-3xl mx-auto">Seleziona una macro-regione per visualizzare dati specifici su prezzi, clima e collegamenti aerei.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8" id="region-selector">
+                <button class="region-card bg-white p-4 rounded-lg shadow-md text-center active" data-region="beijing">
+                    <span class="text-3xl">🏛️</span>
+                    <p class="font-bold mt-2">Pechino & Nord</p>
+                </button>
+                <button class="region-card bg-white p-4 rounded-lg shadow-md text-center" data-region="shanghai">
+                    <span class="text-3xl">🏙️</span>
+                    <p class="font-bold mt-2">Shanghai & Costa Est</p>
+                </button>
+                 <button class="region-card bg-white p-4 rounded-lg shadow-md text-center" data-region="pearl_river">
+                    <span class="text-3xl">🏭</span>
+                    <p class="font-bold mt-2">Delta Fiume delle Perle</p>
+                </button>
+                <button class="region-card bg-white p-4 rounded-lg shadow-md text-center" data-region="southwest">
+                    <span class="text-3xl">🐼</span>
+                    <p class="font-bold mt-2">Sud-Ovest Interno</p>
+                </button>
+            </div>
+            
+            <div id="regional-content" class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 id="region-title" class="text-2xl font-bold text-slate-900"></h3>
+                        <p id="region-description" class="mt-2 text-slate-600"></p>
+                        <div class="mt-6 space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-slate-800">Principali Aeroporti</h5>
+                                <p id="region-airports" class="text-slate-600"></p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-slate-800">Compagnie Dirette Principali</h5>
+                                <p id="region-airlines" class="text-slate-600"></p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-slate-800">Periodo Ideale vs Economico</h5>
+                                <p id="region-timing" class="text-slate-600"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-center mb-4">Fasce di Prezzo Stimate (A/R)</h4>
+                        <div class="chart-container !h-80">
+                            <canvas id="regionalChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="airlines" class="tab-content">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-slate-900">Confronto tra Compagnie Aeree</h2>
+                <p class="mt-2 text-lg text-slate-600 max-w-3xl mx-auto">Una panoramica delle principali compagnie che operano sulle rotte Italia-Cina, con un confronto basato su recensioni e tipologia di servizio.</p>
+            </div>
+             <div class="bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-xl font-bold text-center mb-6">Punteggio Medio Recensioni (Dati Indicativi)</h3>
+                <div class="chart-container" style="height: 400px;">
+                    <canvas id="airlineRatingChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <footer class="site-footer">
+        <p>&copy; 2024-2025 Francesco Travels. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+    const regionalData = {
+        beijing: {
+            title: "Regione di Pechino (Capitale e Nord)",
+            description: "Importante centro politico e culturale, questa regione è caratterizzata da inverni freddi ed estati calde. I prezzi dei voli riflettono una forte stagionalità.",
+            airports: "Beijing Capital (PEK), Beijing Daxing (PKX)",
+            airlines: "Air China (da FCO, MXP)",
+            timing: "Clima ideale in Primavera/Autunno. Voli più economici in Febbraio/Maggio/Novembre.",
+            chartData: {
+                labels: ['Da Roma (FCO)', 'Da Milano (MXP)'],
+                datasets: [
+                    { label: 'Bassa Stagione (da)', data: [450, 420], backgroundColor: '#38bdf8' },
+                    { label: 'Alta Stagione (fino a)', data: [850, 700], backgroundColor: '#0c4a6e' }
+                ]
+            }
+        },
+        shanghai: {
+            title: "Regione di Shanghai (Delta dello Yangtze)",
+            description: "Cuore economico della Cina e spesso la porta d'ingresso più competitiva dall'Italia. Estati calde e molto umide con rischio tifoni.",
+            airports: "Shanghai Pudong (PVG), Shanghai Hongqiao (SHA)",
+            airlines: "China Eastern (da FCO, VCE), Air China (da MXP)",
+            timing: "Clima ideale in Primavera/Autunno. Voli più economici in Giugno/Novembre/Dicembre.",
+            chartData: {
+                labels: ['Da Roma (FCO)', 'Da Milano (MXP)', 'Da Venezia (VCE)'],
+                datasets: [
+                    { label: 'Bassa Stagione (da)', data: [390, 411, 450], backgroundColor: '#38bdf8' },
+                    { label: 'Alta Stagione (fino a)', data: [1100, 1100, 1100], backgroundColor: '#0c4a6e' }
+                ]
+            }
+        },
+        pearl_river: {
+            title: "Delta del Fiume delle Perle (Sud)",
+            description: "Regione subtropicale e dinamica che include Guangzhou, Shenzhen e Hong Kong. Il tardo autunno offre il clima migliore.",
+            airports: "Guangzhou (CAN), Shenzhen (SZX), Hong Kong (HKG)",
+            airlines: "China Southern (CAN), Hainan Airlines (SZX), Cathay Pacific (HKG)",
+            timing: "Clima ideale in Tardo Autunno. Voli più economici in Settembre/Ottobre/Novembre.",
+             chartData: {
+                labels: ['Guangzhou', 'Shenzhen', 'Hong Kong'],
+                datasets: [
+                    { label: 'Bassa Stagione (da)', data: [485, 505, 420], backgroundColor: '#38bdf8' },
+                    { label: 'Alta Stagione (fino a)', data: [1000, 1100, 1100], backgroundColor: '#0c4a6e' }
+                ]
+            }
+        },
+        southwest: {
+            title: "Cina Sud-Occidentale (Interna)",
+            description: "Regione di paesaggi mozzafiato, cultura unica e storia antica (Chengdu, Chongqing, Xi'an). I voli diretti stanno aprendo nuove rotte.",
+            airports: "Chengdu (TFU/CTU), Chongqing (CKG), Xi'an (XIY)",
+            airlines: "Sichuan Airlines (CTU), Air China (CTU), Hainan Airlines (CKG), China Eastern (XIY)",
+            timing: "Clima ideale in Primavera/Autunno. Voli economici molto variabili (es. Giu, Ott, Nov, Mar).",
+            chartData: {
+                labels: ['Chengdu (CTU)', 'Chongqing (CKG)', 'Xi\'an (XIY)'],
+                datasets: [
+                    { label: 'Bassa Stagione (da)', data: [410, 515, 515], backgroundColor: '#38bdf8' },
+                    { label: 'Alta Stagione (fino a)', data: [900, 950, 1000], backgroundColor: '#0c4a6e' }
+                ]
+            }
+        }
+    };
+    
+    let regionalChartInstance;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const navLinks = document.querySelectorAll('#dashboard-nav .dashboard-nav-link');
+        const tabs = document.querySelectorAll('.tab-content');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const tabId = link.getAttribute('data-tab');
+                
+                navLinks.forEach(l => l.classList.remove('active'));
+                tabs.forEach(t => t.classList.remove('active'));
+                
+                link.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom', labels: { color: '#475569', font: { family: "'Inter', sans-serif" } } },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) { label += ': '; }
+                            if (context.parsed.y !== null) { label += new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(context.parsed.y); }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: { beginAtZero: true, ticks: { color: '#475569', callback: value => `€${value}` }, grid: { color: '#e2e8f0' } },
+                x: { ticks: { color: '#475569' }, grid: { display: false } }
+            }
+        };
+
+        new Chart(document.getElementById('seasonalChart'), {
+            type: 'line',
+            data: {
+                labels: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
+                datasets: [
+                    { label: 'Prezzo Medio Bassa Stag.', data: [450, 400, 450, 500, 430, 450, 700, 700, 500, 550, 400, 370], borderColor: '#38bdf8', backgroundColor: 'rgba(56, 189, 248, 0.1)', tension: 0.3, fill: true },
+                    { label: 'Prezzo Medio Alta Stag.', data: [700, 650, 750, 850, 900, 800, 1200, 1200, 850, 950, 700, 750], borderColor: '#0c4a6e', backgroundColor: 'rgba(12, 74, 110, 0.1)', tension: 0.3, fill: true }
+                ]
+            },
+            options: defaultChartOptions
+        });
+
+        function updateRegionalContent(region) {
+            const data = regionalData[region];
+            document.getElementById('region-title').textContent = data.title;
+            document.getElementById('region-description').textContent = data.description;
+            document.getElementById('region-airports').textContent = data.airports;
+            document.getElementById('region-airlines').textContent = data.airlines;
+            document.getElementById('region-timing').textContent = data.timing;
+
+            if (regionalChartInstance) {
+                regionalChartInstance.destroy();
+            }
+            regionalChartInstance = new Chart(document.getElementById('regionalChart'), {
+                type: 'bar',
+                data: data.chartData,
+                options: defaultChartOptions
+            });
+        }
+        
+        const regionSelector = document.getElementById('region-selector');
+        regionSelector.addEventListener('click', (e) => {
+            const button = e.target.closest('.region-card');
+            if (button) {
+                const region = button.dataset.region;
+                regionSelector.querySelectorAll('.region-card').forEach(b => b.classList.remove('active'));
+                button.classList.add('active');
+                updateRegionalContent(region);
+            }
+        });
+        
+        updateRegionalContent('beijing');
+
+        new Chart(document.getElementById('airlineRatingChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Hainan Airlines', 'Cathay Pacific', 'Sichuan Airlines', 'Air China', 'China Eastern', 'Lufthansa'],
+                datasets: [{
+                    label: 'Punteggio Medio Recensioni',
+                    data: [8.1, 8.3, 8.0, 7.2, 7.2, 6.7],
+                    backgroundColor: ['#0c4a6e', '#0e7490', '#0ea5e9', '#38bdf8', '#7dd3fc', '#e0f2fe'],
+                    borderColor: '#fff',
+                    borderWidth: 1
+                }]
+            },
+            options: { ...defaultChartOptions, indexAxis: 'y', scales: { x: { min: 6, max: 9, ticks: { color: '#475569' } }, y: { ticks: { color: '#475569' } } } }
+        });
+    });
+    </script>
+</body>
+</html>
