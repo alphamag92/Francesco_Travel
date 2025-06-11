@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KC74LVP2');</script>
-<!-- End Google Tag Manager -->
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analisi Voli Italia-Cina - Francesco Travels</title>
@@ -37,7 +29,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 height: 350px;
             }
         }
-        /* Stili per le schede di navigazione interne alla dashboard */
+        /* Stili per le schede di navigazione interne alla dashboard (rinominato per chiarezza) */
         .dashboard-nav-link {
             cursor: pointer;
             padding: 0.75rem 1rem;
@@ -64,8 +56,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             border-color: #0ea5e9; /* sky-500 */
             transform: translateY(-4px);
         }
-        /* Stili per il menu di navigazione principale del sito (semplificati per questa pagina) */
-        .main-nav-header { background-color: #34495e; padding: 15px 0; text-align: center; font-family: Arial, sans-serif; }
+         /* Stili per il menu di navigazione principale del sito (semplificati per questa pagina) */
+         .main-nav-header { background-color: #34495e; padding: 15px 0; text-align: center; font-family: Arial, sans-serif; }
         .main-nav-header ul { list-style: none; padding: 0; margin: 0; display: inline-block; }
         .main-nav-header ul li { display: inline-block; margin: 0 20px; }
         .main-nav-header ul li a { color: #ecf0f1; font-weight: bold; font-size: 1.1rem; text-decoration: none; }
@@ -78,10 +70,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </style>
 </head>
 <body class="text-slate-800">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KC74LVP2"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
     <header>
         <div class="secondary-header-title">
@@ -296,10 +284,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             airlines: "China Southern (CAN), Hainan Airlines (SZX), Cathay Pacific (HKG)",
             timing: "Clima ideale in Tardo Autunno. Voli più economici in Settembre/Ottobre/Novembre.",
              chartData: {
-                labels: ['Guangzhou', 'Shenzhen', 'Hong Kong'],
+                labels: ['Da Roma (FCO)', 'Da Milano (MXP)'],
                 datasets: [
-                    { label: 'Bassa Stagione (da)', data: [485, 505, 420], backgroundColor: '#38bdf8' },
-                    { label: 'Alta Stagione (fino a)', data: [1000, 1100, 1100], backgroundColor: '#0c4a6e' }
+                    { label: 'Bassa Stagione (da)', data: [510, 450], backgroundColor: '#38bdf8' },
+                    { label: 'Alta Stagione (fino a)', data: [900, 850], backgroundColor: '#0c4a6e' }
                 ]
             }
         },
@@ -310,10 +298,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             airlines: "Sichuan Airlines (CTU), Air China (CTU), Hainan Airlines (CKG), China Eastern (XIY)",
             timing: "Clima ideale in Primavera/Autunno. Voli economici molto variabili (es. Giu, Ott, Nov, Mar).",
             chartData: {
-                labels: ['Chengdu (CTU)', 'Chongqing (CKG)', 'Xi\'an (XIY)'],
+                labels: ['Da Roma (FCO)', 'Da Milano (MXP)'],
                 datasets: [
-                    { label: 'Bassa Stagione (da)', data: [410, 515, 515], backgroundColor: '#38bdf8' },
-                    { label: 'Alta Stagione (fino a)', data: [900, 950, 1000], backgroundColor: '#0c4a6e' }
+                    { label: 'Bassa Stagione (da)', data: [520, 410], backgroundColor: '#38bdf8' },
+                    { label: 'Alta Stagione (fino a)', data: [950, 900], backgroundColor: '#0c4a6e' }
                 ]
             }
         }
@@ -382,10 +370,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             if (regionalChartInstance) {
                 regionalChartInstance.destroy();
             }
+
+            // OPZIONE SPECIFICA PER GRAFICO REGIONALE ORIZZONTALE
+            const regionalChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y', // Asse Y per le etichette, X per i valori
+                scales: {
+                    x: { // Asse X ora mostra i valori
+                        beginAtZero: true,
+                        ticks: { color: '#475569', callback: value => `€${value}` },
+                        grid: { color: '#e2e8f0' }
+                    },
+                    y: { // Asse Y ora mostra le etichette
+                        ticks: { color: '#475569' },
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#475569', font: { family: "'Inter', sans-serif" } } },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) { label += ': '; }
+                                if (context.parsed.x !== null) { label += new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(context.parsed.x); }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            };
+
             regionalChartInstance = new Chart(document.getElementById('regionalChart'), {
                 type: 'bar',
                 data: data.chartData,
-                options: defaultChartOptions
+                options: regionalChartOptions
             });
         }
         
