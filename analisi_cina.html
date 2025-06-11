@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="scroll-smooth">
 <head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KC74LVP2');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analisi Voli Italia-Cina - Francesco Travels</title>
@@ -29,7 +34,6 @@
                 height: 350px;
             }
         }
-        /* Stili per le schede di navigazione interne alla dashboard (rinominato per chiarezza) */
         .dashboard-nav-link {
             cursor: pointer;
             padding: 0.75rem 1rem;
@@ -56,8 +60,8 @@
             border-color: #0ea5e9; /* sky-500 */
             transform: translateY(-4px);
         }
-         /* Stili per il menu di navigazione principale del sito (semplificati per questa pagina) */
-         .main-nav-header { background-color: #34495e; padding: 15px 0; text-align: center; font-family: Arial, sans-serif; }
+        /* Stili per il menu di navigazione principale del sito */
+        .main-nav-header { background-color: #34495e; padding: 15px 0; text-align: center; font-family: Arial, sans-serif; }
         .main-nav-header ul { list-style: none; padding: 0; margin: 0; display: inline-block; }
         .main-nav-header ul li { display: inline-block; margin: 0 20px; }
         .main-nav-header ul li a { color: #ecf0f1; font-weight: bold; font-size: 1.1rem; text-decoration: none; }
@@ -65,12 +69,11 @@
         .secondary-header-title { text-align: center; padding: 20px 0 10px; background-color: #34495e; font-family: Arial, sans-serif; }
         .site-title-link { font-size: 2rem; color: #ecf0f1; font-weight: bold; text-decoration: none; }
         .site-title-link:hover { color: #ffffff; }
-        .site-footer { background-color: #2c3e50; color: #ecf0f1; text-align: center; padding: 25px 0; margin-top: 40px; font-family: Arial, sans-serif;}
-
     </style>
 </head>
 <body class="text-slate-800">
-
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KC74LVP2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <header>
         <div class="secondary-header-title">
              <a href="index.html" class="site-title-link">Francesco Travels</a>
@@ -243,8 +246,11 @@
 
     </main>
     
-    <footer class="site-footer">
-        <p>&copy; 2024-2025 Francesco Travels. Tutti i diritti riservati.</p>
+    <footer class="bg-slate-800 text-white mt-12 py-8">
+        <div class="container mx-auto px-6 text-center text-slate-400">
+            <p>Questa dashboard interattiva è basata sui dati del "Report sull'Analisi del Mercato dei Voli Italia-Cina".</p>
+            <p class="text-sm mt-2">Tutti i dati sui prezzi sono stime indicative e soggette a fluttuazioni. Verificare sempre le tariffe attuali.</p>
+        </div>
     </footer>
 
     <script>
@@ -371,18 +377,17 @@
                 regionalChartInstance.destroy();
             }
 
-            // OPZIONE SPECIFICA PER GRAFICO REGIONALE ORIZZONTALE
             const regionalChartOptions = {
                 responsive: true,
                 maintainAspectRatio: false,
-                indexAxis: 'y', // Asse Y per le etichette, X per i valori
+                indexAxis: 'y',
                 scales: {
-                    x: { // Asse X ora mostra i valori
+                    x: {
                         beginAtZero: true,
                         ticks: { color: '#475569', callback: value => `€${value}` },
                         grid: { color: '#e2e8f0' }
                     },
-                    y: { // Asse Y ora mostra le etichette
+                    y: {
                         ticks: { color: '#475569' },
                         grid: { display: false }
                     }
@@ -421,20 +426,64 @@
         });
         
         updateRegionalContent('beijing');
+        
+        const airlineRatingData = [
+            { label: 'Cathay Pacific', score: 8.3 },
+            { label: 'Hainan Airlines', score: 8.1 },
+            { label: 'Sichuan Airlines', score: 8.0 },
+            { label: 'Air China', score: 7.2 },
+            { label: 'China Eastern', score: 7.2 },
+            { label: 'Lufthansa', score: 6.7 }
+        ];
+
+        airlineRatingData.sort((a, b) => b.score - a.score);
+
+        const sortedLabels = airlineRatingData.map(d => d.label);
+        const sortedScores = airlineRatingData.map(d => d.score);
 
         new Chart(document.getElementById('airlineRatingChart'), {
             type: 'bar',
             data: {
-                labels: ['Hainan Airlines', 'Cathay Pacific', 'Sichuan Airlines', 'Air China', 'China Eastern', 'Lufthansa'],
+                labels: sortedLabels,
                 datasets: [{
                     label: 'Punteggio Medio Recensioni',
-                    data: [8.1, 8.3, 8.0, 7.2, 7.2, 6.7],
+                    data: sortedScores,
                     backgroundColor: ['#0c4a6e', '#0e7490', '#0ea5e9', '#38bdf8', '#7dd3fc', '#e0f2fe'],
                     borderColor: '#fff',
                     borderWidth: 1
                 }]
             },
-            options: { ...defaultChartOptions, indexAxis: 'y', scales: { x: { min: 6, max: 9, ticks: { color: '#475569' } }, y: { ticks: { color: '#475569' } } } }
+            options: { 
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { 
+                    x: { 
+                        min: 6, 
+                        max: 9, 
+                        ticks: { color: '#475569' },
+                        grid: { color: '#e2e8f0' }
+                    }, 
+                    y: { 
+                        ticks: { color: '#475569' } 
+                    } 
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) { label += ': '; }
+                                if (context.parsed.x !== null) {
+                                    label += context.parsed.x.toFixed(1);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
         });
     });
     </script>
