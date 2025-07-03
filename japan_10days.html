@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itinerario di Viaggio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px; /* Aumentata la grandezza del font */
+        }
+
+        /* Stile per la scrollbar (opzionale, per estetica) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* Uniforma le immagini dell'itinerario */
+        img.itinerary-img {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto p-4 lg:p-8">
+
+        <!-- Titolo principale -->
+        <header class="text-center mb-8 lg:mb-12">
+            <h1 class="text-4xl lg:text-5xl font-bold text-slate-900">Viaggio in Giappone</h1>
+            <p class="text-lg text-slate-600 mt-2">Un'avventura di 10 giorni tra tradizione e modernità</p>
+        </header>
+
+        <!-- Layout a tre colonne -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- COLONNA SINISTRA: Riepilogo giorni -->
+            <aside class="lg:col-span-3 lg:sticky lg:top-8 h-max">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-xl font-bold mb-4 border-b pb-2 text-slate-900">Indice del Viaggio</h2>
+                    <nav>
+                        <ul id="day-navigation" class="space-y-2">
+                            <li><a href="#giorno-1"
+                                    class="block p-3 rounded-lg text-slate-700 hover:bg-sky-100 hover:text-sky-800 transition-colors duration-200">Giorno 1: Partenza da Milano</a></li>
+                            <li><a href="#giorno-2"
+                                    class="block p-3 rounded-lg text-slate-700 hover:bg-sky-100 hover:text-sky-800 transition-colors duration-200">Giorno 2: Arrivo a Tokyo</a></li>
+                            <li><a href="#giorno-3"
+                                    class="block p-3 rounded-lg text-slate-700 hover:bg-sky-100 hover:text-sky-800 transition-colors duration-200">Giorno 3: Cuore di Tokyo: Un Percorso tra Storia, Gusto e Innovazione</a></li>
+                            <li><a href="#giorno-4"
+                                    class="block p-3 rounded-lg text-slate-700 hover:bg-sky-100 hover:text-sky-800 transition-colors duration-200">Giorno 4: Vortex Tokyo: da Meiji a Mezzanotte</a></li>
+                            <li><a href="#giorno-5"
+                                    class="block p-3 rounded-lg text-slate-700 hover:bg-sky-100 hover:text-sky-800 transition-colors duration-200">Giorno 5: L'Anima Pop di Tokyo</a></li>
+                            <li><a href="#giorno-6"
+                                    class="block p-3 rounded-lg text-slate-700 hover:bg-sky-100 hover:text-sky-800 transition-colors duration-200">Giorno 6: La Via del Kansai: Dai Templi di Nara alle Luci di Dotonbori</a></li>
+                            <li><a href="#giorno-7"
+                                    class="block p-3 rounded-lg text-slate-700 hover:bg-sky-100 hover:text-sky-800 transition-colors duration-200">Giorno 7: Sentieri di Dei, Shogun e Imperatori</a></li>
+                            <li><a href="#giorno-8"
+                                    class="block p-3 rounded-lg text-slate-700 hover:bg-sky-100 hover:text-sky-800 transition-colors duration-200">Giorno 8: Addio Kyoto, tra Bambù e Oro</a></li>
+                            <li><a href="#giorno-9"
+                                    class="block p-3 rounded-lg text-slate-700 hover:bg-sky-100 hover:text-sky-800 transition-colors duration-200">Giorno 9: Saluto al Sol Levante</a></li>
+                            <li><a href="#giorno-10"
+                                    class="block p-3 rounded-lg text-slate-700 hover:bg-sky-100 hover:text-sky-800 transition-colors duration-200">Giorno 10: Ritorno in Italia</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- COLONNA CENTRALE: Itinerario dettagliato -->
+            <main class="lg:col-span-6 space-y-8">
+
+                <!-- Giorno 1 -->
+                <section id="giorno-1" class="bg-white p-6 rounded-xl shadow-md scroll-mt-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Giorno 1: Partenza da Milano</h3>
+                    <img src="images/partenza.png"
+                        alt="Immagine dell'Aeroporto di Malpensa" class="itinerary-img rounded-lg mb-6">
+                    <div class="space-y-4">
+                    
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="h-5 w-5 mr-2 text-teal-500">
+                                    <path
+                                        d="M2 9a3 3 0 0 1 0 6v1a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-1a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+                                    <path d="M13 5v2" />
+                                    <path d="M13 17v2" />
+                                    <path d="M13 11v2" />
+                                </svg><strong class="font-semibold text-slate-600">Volo:</strong></div>
+                            <div class="text-slate-800">Imbarco a Milano - Malpensa alle ore 12:30</div>
+                        </div>
+                        
+                    </div>
+                </section>
+
+                <!-- Giorno 2 -->
+                <section id="giorno-2" class="bg-white p-6 rounded-xl shadow-md scroll-mt-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Giorno 2: Arrivo a Tokyo</h3>
+                    <img src="images/shinjuku_amine.png"
+                        alt="Immagine di Shinjuku" class="itinerary-img rounded-lg mb-6">
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-purple-500">
+                                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                    <polyline points="9 22 9 12 15 12 15 22" />
+                                </svg><strong class="font-semibold text-slate-600">Alloggio:</strong></div>
+                            <div class="text-slate-800">Hotel a Shinjuku</div>
+                        </div>
+                        
+                        <hr class="my-4 border-slate-200">
+
+                    <div class="space-y-4">                
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="h-5 w-5 mr-2 text-teal-500">
+                                    <path
+                                        d="M2 9a3 3 0 0 1 0 6v1a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-1a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+                                    <path d="M13 5v2" />
+                                    <path d="M13 17v2" />
+                                    <path d="M13 11v2" />
+                                </svg><strong class="font-semibold text-slate-600">Scalo:</strong></div>
+                            <div class="text-slate-800">Arrivo alle 05:50 a Shanghai - Pu Dong (2h 30m scalo).<br>Partenza alle 08:20, arrivo 12:15 a Tokyo - Narita.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-blue-500">
+                                    <path
+                                        d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1.5-1.5-3-1-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
+                                </svg><strong class="font-semibold text-slate-600">Durata Volo:</strong></div>
+                            <div class="text-slate-800">Milano-Shanghai 11h 20m<br>Shanghai-Tokyo 2h 55m</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Pranzo:</strong></div>
+                            <div class="text-slate-800">Pranzo veloce in Izakaya a Shinjuku.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Pomeriggio:</strong></div>
+                            <div class="text-slate-800">- Quartiere di Shinjuku.<br>- Tokyo Metropolitan Government Building.<br>- Kabukicho.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Cena:</strong></div>
+                            <div class="text-slate-800">Ramen o Sushi a Shinjuku - Kabukicho.</div>
+                        </div>
+                        
+                    </div>
+                </section>
+
+                <!-- Giorno 3 -->
+                <section id="giorno-3" class="bg-white p-6 rounded-xl shadow-md scroll-mt-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Giorno 3: Cuore di Tokyo: Un Percorso tra Storia, Gusto e Innovazione</h3>
+                    <img src="images/sensoji_anime.png"
+                        alt="Immagine del Tempio Senso-Ji" class="itinerary-img rounded-lg mb-6">
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-purple-500">
+                                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                    <polyline points="9 22 9 12 15 12 15 22" />
+                                </svg><strong class="font-semibold text-slate-600">Alloggio:</strong></div>
+                            <div class="text-slate-800">Hotel a Shinjuku</div>
+                        </div>
+                        
+                        <hr class="my-4 border-slate-200">
+
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Colazione:</strong></div>
+                            <div class="text-slate-800">Colazione vicino all'Hotel.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Mattina:</strong></div>
+                            <div class="text-slate-800">- Palazzo Imperiale.<br>- Quartiere di Ginza.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Pranzo:</strong></div>
+                            <div class="text-slate-800">Sushi e Sashimi a Tsukiji, il vecchio mercato del pesce di Tokyo.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Pomeriggio:</strong></div>
+                            <div class="text-slate-800">- Giardini di Hamarikyū.<br>- Battello turistico lungo il fiume Sumida fino al quartiere di Asakusa.<br>- Tempio Senso-Ji e visita del quartiere di Asakusa.<br>- Skytree.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Cena:</strong></div>
+                            <div class="text-slate-800">Izakaya a Shinjuku.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Giorno 4 -->
+                <section id="giorno-4" class="bg-white p-6 rounded-xl shadow-md scroll-mt-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Giorno 4: Vortex Tokyo: da Meiji a Mezzanotte</h3>
+                    <img src="images/shibuya_anime.png" alt="Immagine di Shibuya" class="itinerary-img rounded-lg mb-6">
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="h-5 w-5 mr-2 text-purple-500">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg><strong class="font-semibold text-slate-600">Alloggio:</strong></div>
+                        <div class="text-slate-800">Hotel a Shinjuku</div>
+                    </div>
+                    
+                    <hr class="my-4 border-slate-200">
+
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Colazione:</strong></div>
+                            <div class="text-slate-800">Colazione vicino all'Hotel.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Mattina:</strong></div>
+                            <div class="text-slate-800">- Santuario Meiji.<br>- Harajuku.<br>- Omotesando<br>- Shibuya</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Pranzo:</strong></div>
+                            <div class="text-slate-800">Pranzo veloce a Shibuya.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Pomeriggio:</strong></div>
+                            <div class="text-slate-800">- TeamLab Borderless.<br>- Tokyo Tower.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Cena:</strong></div>
+                            <div class="text-slate-800">Ramen o Sushi a Roppongi.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Sera:</strong></div>
+                            <div class="text-slate-800">Dopocena nel quartiere dei club di Roppongi.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Giorno 5 -->
+                <section id="giorno-5" class="bg-white p-6 rounded-xl shadow-md scroll-mt-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Giorno 5: L'Anima Pop di Tokyo</h3>
+                    <img src="images/akihabara.jpg" alt="Immagine di Akihabara" class="itinerary-img rounded-lg mb-6">
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="h-5 w-5 mr-2 text-purple-500">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg><strong class="font-semibold text-slate-600">Alloggio:</strong></div>
+                        <div class="text-slate-800">Hotel a Shinjuku</div>
+                    </div>
+                    
+                    <hr class="my-4 border-slate-200">
+
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Colazione:</strong></div>
+                            <div class="text-slate-800">Colazione vicino all'Hotel.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Mattina:</strong></div>
+                            <div class="text-slate-800">- Parco di Ueno.<br>- Ameyoko Street e quartiere di Ueno.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Pranzo:</strong></div>
+                            <div class="text-slate-800">Ristorante tipico Giapponese a Akihabara.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Pomeriggio:</strong></div>
+                            <div class="text-slate-800">- Quartiere di Akihabara.<br>- Quartiere di Ikebukuro e Sunshine City.<br>- Tramonto al Shibuya Sky.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Cena:</strong></div>
+                            <div class="text-slate-800">Ramen o Sushi a Shibuya.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Giorno 6 -->
+                <section id="giorno-6" class="bg-white p-6 rounded-xl shadow-md scroll-mt-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Giorno 6: La Via del Kansai: Dai Templi di Nara alle Luci di Dotonbori</h3>
+                    <img src="images/dotonbori_anime.png" alt="Immagine di Dotonbori" class="itinerary-img rounded-lg mb-6">
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="h-5 w-5 mr-2 text-purple-500">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg><strong class="font-semibold text-slate-600">Alloggio:</strong></div>
+                        <div class="text-slate-800">Hotel a Osaka</div>
+                    </div>
+                    
+                    <hr class="my-4 border-slate-200">
+
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-teal-500">
+                                    <path
+                                        d="M2 9a3 3 0 0 1 0 6v1a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-1a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+                                    <path d="M13 5v2" />
+                                    <path d="M13 17v2" />
+                                    <path d="M13 11v2" />
+                                </svg><strong class="font-semibold text-slate-600">Shinkansen:</strong></div>
+                            <div class="text-slate-800">Trasferimento da Tokyo a Osaka. (2h 30m)</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Colazione:</strong></div>
+                            <div class="text-slate-800">Bento sul treno.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Mattina:</strong></div>
+                            <div class="text-slate-800">Parco di Nara</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Pranzo:</strong></div>
+                            <div class="text-slate-800">Pranzo veloce a Higashimuki Street</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Pomeriggio:</strong></div>
+                            <div class="text-slate-800">- Castello di Osaka.<br>- Quartiere di Umeda e Umeda Sky.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Cena:</strong></div>
+                            <div class="text-slate-800">Ramen o Sushi a Dotonbori.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Giorno 7 -->
+                <section id="giorno-7" class="bg-white p-6 rounded-xl shadow-md scroll-mt-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Giorno 7: Sentieri di Dei, Shogun e Imperatori</h3>
+                    <img src="images/fujimiinari_anime.png" alt="Immagine di Akihabara" class="itinerary-img rounded-lg mb-6">
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="h-5 w-5 mr-2 text-purple-500">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg><strong class="font-semibold text-slate-600">Alloggio:</strong></div>
+                        <div class="text-slate-800">Hotel a Osaka</div>
+                    </div>
+                    
+                    <hr class="my-4 border-slate-200">
+
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Colazione:</strong></div>
+                            <div class="text-slate-800">Colazione vicino all'Hotel.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Mattina:</strong></div>
+                            <div class="text-slate-800">- Santuario Fushimi Inari.<br>- Tempio Sanjūsangen-dō.<br>- Tempio Kiyomizu-Dera.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Pranzo:</strong></div>
+                            <div class="text-slate-800">Pranzo veloce a Nishiki Market.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Pomeriggio:</strong></div>
+                            <div class="text-slate-800">- Tempio Ginkaku-Ji (Padiglione d'Argento).<br>- Palazzo Imperiale.<br>- Castello Nijo.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Cena:</strong></div>
+                            <div class="text-slate-800">Ristorante tipico Giapponese a Kyoto.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Giorno 8 -->
+                <section id="giorno-8" class="bg-white p-6 rounded-xl shadow-md scroll-mt-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Giorno 8: Addio Kyoto, tra Bambù e Oro</h3>
+                    <img src="images/kinkakuji_anime.png" alt="Immagine di kinkakuji" class="itinerary-img rounded-lg mb-6">
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="h-5 w-5 mr-2 text-purple-500">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg><strong class="font-semibold text-slate-600">Alloggio:</strong></div>
+                        <div class="text-slate-800">Hotel a Shinagawa</div>
+                    </div>
+                    
+                    <hr class="my-4 border-slate-200">
+
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Colazione:</strong></div>
+                            <div class="text-slate-800">Colazione vicino all'Hotel.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Mattina:</strong></div>
+                            <div class="text-slate-800">- Foresta di bamboo di Arashiyama e tempio Tenryū-ji.<br>- Tempio Ryōan-ji.<br>- Tempio Kinkaku-ji (Padiglione d'Oro).</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-teal-500">
+                                    <path
+                                        d="M2 9a3 3 0 0 1 0 6v1a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-1a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+                                    <path d="M13 5v2" />
+                                    <path d="M13 17v2" />
+                                    <path d="M13 11v2" />
+                                </svg><strong class="font-semibold text-slate-600">Shinkansen:</strong></div>
+                            <div class="text-slate-800">Trasferimento da Kyoto a Tokyo. (2h 30m)</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Pranzo:</strong></div>
+                            <div class="text-slate-800">Bento sul treno.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Pomeriggio:</strong></div>
+                            <div class="text-slate-800">Acquisto souvenir e regali.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Cena:</strong></div>
+                            <div class="text-slate-800">Ristorante tipico Giapponese vicino all'hotel.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Giorno 9 -->
+                <section id="giorno-9" class="bg-white p-6 rounded-xl shadow-md scroll-mt-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Giorno 9: Saluto al Sol Levante</h3>
+                    <img src="images/arakurayamasengenpark_anime.png" alt="Immagine di kinkakuji" class="itinerary-img rounded-lg mb-6">
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Colazione:</strong></div>
+                            <div class="text-slate-800">Colazione vicino all'Hotel.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Mattina:</strong></div>
+                            <div class="text-slate-800">Parco Arakurayama Sengen e vista sul Monte Fuji.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-orange-500">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                    <path d="M7 2v20" />
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Z" />
+                                </svg><strong class="font-semibold text-slate-600">Pranzo:</strong></div>
+                            <div class="text-slate-800">Pranzo veloce a Tokyo.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-cyan-500">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg><strong class="font-semibold text-slate-600">Pomeriggio:</strong></div>
+                            <div class="text-slate-800">Acquisto souvenir e regali.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-teal-500">
+                                    <path
+                                        d="M2 9a3 3 0 0 1 0 6v1a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-1a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+                                    <path d="M13 5v2" />
+                                    <path d="M13 17v2" />
+                                    <path d="M13 11v2" />
+                                </svg><strong class="font-semibold text-slate-600">Volo:</strong></div>
+                            <div class="text-slate-800">Imbarco a Tokyo - Haneda alle ore 21</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Giorno 10 -->
+                <section id="giorno-10" class="bg-white p-6 rounded-xl shadow-md scroll-mt-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Giorno 10: Ritorno in Italia</h3>
+                    <img src="images/ritorno_anime.png" alt="Immagine del ritorno" class="itinerary-img rounded-lg mb-6">
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-teal-500">
+                                    <path
+                                        d="M2 9a3 3 0 0 1 0 6v1a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-1a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+                                    <path d="M13 5v2" />
+                                    <path d="M13 17v2" />
+                                    <path d="M13 11v2" />
+                                </svg><strong class="font-semibold text-slate-600">Scalo:</strong></div>
+                            <div class="text-slate-800">Arrivo alle 00:05 a Pechino (1h 25m scalo).<br>Partenza alle 01:30, arrivo 06:30 a Milano - Malpensa.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-36 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-5 w-5 mr-2 text-blue-500">
+                                    <path
+                                        d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1.5-1.5-3-1-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
+                                </svg><strong class="font-semibold text-slate-600">Durata Volo:</strong></div>
+                            <div class="text-slate-800">Tokyo-Pechino 3h 55m<br>Pechino-Milano 11h</div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- COLONNA DESTRA: Info riepilogative -->
+            <aside class="lg:col-span-3 lg:sticky lg:top-8 h-max">
+                <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                    <h2 class="text-xl font-bold mb-4 border-b pb-2 text-slate-900">Riepilogo Viaggio</h2>
+                    <ul class="space-y-3 text-slate-700">
+                        <li class="flex items-center"><span class="w-6 h-6 mr-3 text-sky-600">💶</span>
+                            <strong>Costo:</strong> € 2.000</li>
+                        <li class="flex items-center"><span class="w-6 h-6 mr-3 text-sky-600">📅</span>
+                            <strong>Durata:</strong> 10 giorni, 7 notti</li>
+                        <li class="flex items-center"><span class="w-6 h-6 mr-3 text-sky-600">👥</span>
+                            <strong>Partecipanti:</strong> da 4 a 6 persone</li>
+                        <li class="flex items-center"><span class="w-6 h-6 mr-3 text-sky-600">🏨</span>
+                            <strong>Alloggi:</strong> Hotel 3/4 stelle / Appartamento</li>
+                        <li class="flex items-center"><span class="w-6 h-6 mr-3 text-sky-600">🚆</span>
+                            <strong>Trasporti:</strong> Metro, Shinkansen, Treno</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-xl font-bold mb-4 border-b pb-2 text-slate-900">Info sul Paese</h2>
+                    <ul class="space-y-3 text-slate-700">
+                        <li class="flex items-start"><span class="w-6 h-6 mr-3 text-sky-600">📍</span>
+                            <strong>Capitale:</strong> Tokyo</li>
+                        <li class="flex items-start"><span class="w-6 h-6 mr-3 text-sky-600">🗣️</span>
+                            <strong>Lingua:</strong> Giapponese</li>
+                        <li class="flex items-start"><span class="w-6 h-6 mr-3 text-sky-600">💰</span>
+                            <strong>Valuta:</strong> Yen (JPY)</li>
+                        <li class="flex items-start"><span class="w-6 h-6 mr-3 text-sky-600">🔌</span> <strong>Prese
+                                Elettriche:</strong> Tipo A / B, 100V</li>
+                        <li class="flex items-start"><span class="w-6 h-6 mr-3 text-sky-600">🕒</span> <strong>Fuso
+                                Orario:</strong> GMT+9</li>
+                    </ul>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
+    <script>
+        // Script per evidenziare il giorno attivo nella navigazione mentre si scorre
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('main section');
+            const navLinks = document.querySelectorAll('#day-navigation a');
+
+            const observerOptions = {
+                root: null, // osserva rispetto al viewport
+                rootMargin: '0px',
+                threshold: 0.4 // si attiva quando il 40% della sezione è visibile
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+
+                        // Rimuovi la classe attiva da tutti i link
+                        navLinks.forEach(link => {
+                            link.classList.remove('bg-sky-100', 'text-sky-800', 'font-semibold');
+                        });
+
+                        // Aggiungi la classe attiva al link corrispondente
+                        const activeLink = document.querySelector(`#day-navigation a[href="#${id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('bg-sky-100', 'text-sky-800', 'font-semibold');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
