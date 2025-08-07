@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riepilogo Viaggio in Cina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 1.25rem;
+            bottom: -1.25rem;
+            width: 2px;
+            background-color: #d1d5db;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        @media (max-width: 640px) {
+            .timeline-item::before {
+                left: 1rem; /* Corrisponde a ml-4 su mobile */
+                top: 2rem; /* Altezza dell'icona h-8 */
+            }
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .accordion-button.open .arrow {
+            transform: rotate(180deg);
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .activity-icon {
+            flex-shrink: 0;
+            height: 2rem;
+            width: 2rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+        }
+
+        .transport-item .activity-icon {
+            background-color: #e0e7ff;
+            color: #4f46e5;
+        }
+
+        .visit-item .activity-icon {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+
+        .food-item .activity-icon {
+            background-color: #d1fae5;
+            color: #059669;
+        }
+
+        .hotel-item .activity-icon {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Viaggio Tommy Cina 2025</h1>
+            <p class="text-lg text-gray-600 mt-2">Agosto 2025: Un'avventura tra Pechino, Hong Kong e Shanghai</p>
+        </header>
+
+        <!-- Riepilogo Costi -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="mr-3 text-indigo-500">
+                    <path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.41 0l10-10a1 1 0 0 0 0-1.41L12 2z"></path>
+                    <path d="M7 7h.01"></path>
+                </svg>
+                Riepilogo Costi (a persona)
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+                <div class="bg-indigo-50 rounded-lg p-4">
+                    <p class="text-sm text-indigo-700 font-medium">Volo A/R</p>
+                    <p class="text-xl font-bold text-indigo-900">2523 €</p>
+                </div>
+                <div class="bg-sky-50 rounded-lg p-4">
+                    <p class="text-sm text-sky-700 font-medium">Voli Interni</p>
+                    <p class="text-xl font-bold text-sky-900">320 €</p>
+                </div>
+                <div class="bg-emerald-50 rounded-lg p-4">
+                    <p class="text-sm text-emerald-700 font-medium">Treni</p>
+                    <p class="text-xl font-bold text-emerald-900">320 €</p>
+                </div>
+                <div class="bg-amber-50 rounded-lg p-4">
+                    <p class="text-sm text-amber-700 font-medium">Alloggi</p>
+                    <p class="text-xl font-bold text-amber-900">1132 €</p>
+                </div>
+                <div class="bg-rose-50 rounded-lg p-4">
+                    <p class="text-sm text-rose-700 font-medium">Assicurazione</p>
+                    <p class="text-xl font-bold text-rose-900">120 €</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-gray-200 flex justify-end items-center">
+                <span class="text-lg font-medium text-gray-600 mr-4">Costo Totale Stimato</span>
+                <span class="text-3xl font-bold text-indigo-600">4415 €</span>
+            </div>
+        </div>
+
+        <!-- Itinerario Timeline -->
+        <div class="space-y-8">
+            <!-- Partenza -->
+            <div class="relative timeline-item">
+                <div class="flex items-center mb-4">
+                    <div class="z-10 bg-gray-400 rounded-full h-10 w-10 flex items-center justify-center text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-plane-takeoff">
+                            <path d="M2 22h20" />
+                            <path
+                                d="M6.36 17.41 4.22 15.27a2.43 2.43 0 0 1 0-3.43l3.43-3.43a2.43 2.43 0 0 1 3.43 0l3.43 3.43a2.43 2.43 0 0 1 0 3.43l-2.14 2.14" />
+                            <path
+                                d="M14.24 12.24 12.12 10.12a2.43 2.43 0 0 1 0-3.43l3.43-3.43a2.43 2.43 0 0 1 3.43 0l3.43 3.43a2.43 2.43 0 0 1 0 3.43l-2.14 2.14" />
+                            <path d="m15 13-2.5 2.5" />
+                            <path d="M11.5 16.5 14 14" />
+                        </svg>
+                    </div>
+                    <h3 class="ml-4 text-xl font-semibold text-gray-700">8 Agosto: Partenza</h3>
+                </div>
+                <div class="ml-14 bg-white p-4 rounded-lg shadow-md">
+                    <p><span class="font-semibold">15:40:</span> Partenza da Firenze per Monaco. Scalo a monaco 16.55-19.40.</p>
+                    <p><span class="font-semibold">19:40:</span> Partenza da Monaco per Pechino.</p>
+                </div>
+            </div>
+
+            <!-- Pechino -->
+            <div class="relative timeline-item">
+                <div class="flex items-center mb-4">
+                    <div class="z-10 bg-red-500 rounded-full h-10 w-10 flex items-center justify-center text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-landmark">
+                            <line x1="3" x2="21" y1="22" y2="22" />
+                            <line x1="6" x2="6" y1="18" y2="11" />
+                            <line x1="10" x2="10" y1="18" y2="11" />
+                            <line x1="14" x2="14" y1="18" y2="11" />
+                            <line x1="18" x2="18" y1="18" y2="11" />
+                            <polygon points="12 2 20 7 4 7" />
+                        </svg>
+                    </div>
+                    <h3 class="ml-4 text-xl font-semibold text-gray-700">9 - 13 Agosto: Pechino</h3>
+                </div>
+                <div class="ml-14 bg-white p-4 rounded-lg shadow-md accordion-container">
+                    <div class="space-y-2">
+                        <!-- Giorno 9 -->
+                        <div class="border-b border-gray-200 pb-2">
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 1: 9 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item hotel-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-plane-landing">
+                                            <path d="M2 22h20" />
+                                            <path
+                                                d="M6.36 17.41 4.22 15.27a2.43 2.43 0 0 1 0-3.43l3.43-3.43a2.43 2.43 0 0 1 3.43 0l3.43 3.43a2.43 2.43 0 0 1 0 3.43l-2.14 2.14" />
+                                            <path
+                                                d="M14.24 12.24 12.12 10.12a2.43 2.43 0 0 1 0-3.43l3.43-3.43a2.43 2.43 0 0 1 3.43 0l3.43 3.43a2.43 2.43 0 0 1 0 3.43l-2.14 2.14" />
+                                            <path d="m15 13-2.5 2.5" />
+                                            <path d="M11.5 16.5 14 14" />
+                                        </svg></div>
+                                    <p><strong>11:45:</strong> Atterraggio TERMNAL 3. Dopo aver preso i bagagli
+                                        <strong>PRENDERE TAXI</strong> per Hotel.</p>
+                                </div>
+                                <div class="activity-item hotel-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-building">
+                                            <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
+                                            <path d="M9 22v-4h6v4" />
+                                            <path d="M8 6h.01" />
+                                            <path d="M16 6h.01" />
+                                            <path d="M12 6h.01" />
+                                            <path d="M12 10h.01" />
+                                            <path d="M12 14h.01" />
+                                            <path d="M16 10h.01" />
+                                            <path d="M8 10h.01" />
+                                            <path d="M8 14h.01" />
+                                            <path d="M16 14h.01" />
+                                        </svg></div>
+                                    <p><strong>14:30:</strong> Arrivo all'hotel.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>15:30:</strong> Andare a <strong>PRENDERE LA METRO</strong> DONGDAN
+                                        (Linea 1 ROSSO) Exit A. Scendere a XIDAN Exit B North.</p>
+                                </div>
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-utensils-crossed">
+                                            <path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8Z" />
+                                            <path d="M15 15 3.34 3.34" />
+                                            <path d="m22 16-6-6" />
+                                            <path d="m8 2 1.8 1.8a3 3 0 0 1 0 4.2L7.5 10.3a3 3 0 0 1-4.2 0L2 8Z" />
+                                        </svg></div>
+                                    <p><strong>20:30:</strong> Cena nel quartiere di Xidan.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>21:30:</strong> <strong>PRENDERE LA METRO</strong> XIDAN (Linea 1 ROSSO).
+                                        Scendere a DONGDAN Exit A. Tornare all'Hotel.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Giorno 10 -->
+                        <div class="border-b border-gray-200 pb-2">
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 2: 10 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-coffee">
+                                            <path d="M10 2v2" />
+                                            <path d="M14 2v2" />
+                                            <path
+                                                d="M16 8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2Z" />
+                                            <path
+                                                d="M6 22h8a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2Z" />
+                                        </svg></div>
+                                    <p><strong>08:00:</strong> Uscire dall'Hotel e fare colazione.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>08:45:</strong> Andare a <strong>PRENDERE LA METRO</strong> DONGDAN
+                                        (Linea 1 ROSSO) Exit A. Scendere a TIAN'ANMEN EAST Exit D south-west.</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-landmark">
+                                            <line x1="3" x2="21" y1="22" y2="22" />
+                                            <line x1="6" x2="6" y1="18" y2="11" />
+                                            <line x1="10" x2="10" y1="18" y2="11" />
+                                            <line x1="14" x2="14" y1="18" y2="11" />
+                                            <line x1="18" x2="18" y1="18" y2="11" />
+                                            <polygon points="12 2 20 7 4 7" />
+                                        </svg></div>
+                                    <p><strong>09:30:</strong> Ingresso Piazza Tianmen e dopo città proibita.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>13:00:</strong> All'uscita della città proibita <strong>PRENDERE LA
+                                            METRO</strong> National Art Museum (linea 8 VERDE) Exit A north-west.
+                                        Scendere a NANLUOGUXIANG Exit E. Pranzare nel quartiere Hutong (seguire la via
+                                        principale).</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>16:00:</strong> <strong>PRENDERE LA METRO</strong> SHICHAHAI (linea 8
+                                        VERDE) Exit A north-west. Scendere a National Art Museum Exit A north-west. Andare a piedi al parco Jingshan.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>17:00:</strong> <strong>PRENDERE TAXI</strong> per Hongqiao Market (Pearl Market) e visitarlo.
+                                    </p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-walk">
+                                            <circle cx="12" cy="5" r="1" />
+                                            <path d="M9 20l3-6 3 6" />
+                                            <path d="M6 12l6-3 6 3" />
+                                            <path d="M6 8l6 3 6-3" />
+                                        </svg></div>
+                                    <p><strong>19:00:</strong> Andare a piedi al tempio del Cielo (passando dal East Gate).
+                                    </p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-walk">
+                                            <circle cx="12" cy="5" r="1" />
+                                            <path d="M9 20l3-6 3 6" />
+                                            <path d="M6 12l6-3 6 3" />
+                                            <path d="M6 8l6 3 6-3" />
+                                        </svg></div>
+                                    <p><strong>20:30:</strong> Uscire dal North Gate e andare a piedi a Quianmen street (entrata sud) e cenare li.
+                                    </p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>23:00:</strong> <strong>PRENDERE LA METRO</strong> Qianmen (linea 8
+                                        VERDE) Exit I south-west. Scendere a Jinyu Hutong Exit B e andare a piedi
+                                        all'hotel.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Giorno 11 -->
+                        <div class="border-b border-gray-200 pb-2">
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 3: 11 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-coffee">
+                                            <path d="M10 2v2" />
+                                            <path d="M14 2v2" />
+                                            <path
+                                                d="M16 8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2Z" />
+                                            <path
+                                                d="M6 22h8a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2Z" />
+                                        </svg></div>
+                                    <p><strong>07:00:</strong> Fare colazione (Starbucks apre alle 7).</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-car">
+                                            <path
+                                                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2 12v9c0 .6.4 1 1 1h2" />
+                                            <path d="M14 17H9" />
+                                            <path d="M5 17h2" />
+                                            <circle cx="7" cy="17" r="2" />
+                                            <circle cx="17" cy="17" r="2" />
+                                        </svg></div>
+                                    <p><strong>07:20:</strong> <strong>PRENDERE TAXI</strong> per punto d'incontro tour
+                                        (circa 20 minuti).</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-bus">
+                                            <path d="M8 6v6" />
+                                            <path d="M16 6v6" />
+                                            <path d="M2 12h19.6" />
+                                            <path
+                                                d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3" />
+                                            <circle cx="7" cy="18" r="2" />
+                                            <path d="M9 18h5" />
+                                            <circle cx="16" cy="18" r="2" />
+                                        </svg></div>
+                                    <p><strong>08:00:</strong> Partenza <strong>TOUR</strong> per muraglia.</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-shopping-bag">
+                                            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                                            <path d="M3 6h18" />
+                                            <path d="M16 10a4 4 0 0 1-8 0" />
+                                        </svg></div>
+                                    <p><strong>16:30:</strong> Ritorno dal tour al punto d'incontro. Andare a piedi a
+                                        Sanlitun Yashow Clothing Market.</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-map-pin">
+                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                            <circle cx="12" cy="10" r="3" />
+                                        </svg></div>
+                                    <p><strong>18:30:</strong> Visitare la zona, andare in direzione metro CHAOYANGMEN.
+                                    </p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>20:30:</strong> <strong>PRENDERE LA METRO</strong> CHAOYANGMEN (linea 8
+                                        BRONZO). Scendere a DONGSI Exit G south-west. Andare a piedi a Wangfujing Night
+                                        Market e mangiare uno spiedino di scorpioni.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Giorno 12 -->
+                        <div>
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 4: 12 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-coffee">
+                                            <path d="M10 2v2" />
+                                            <path d="M14 2v2" />
+                                            <path
+                                                d="M16 8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2Z" />
+                                            <path
+                                                d="M6 22h8a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2Z" />
+                                        </svg></div>
+                                    <p><strong>07:00:</strong> Uscire dall'Hotel e fare colazione.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-car">
+                                            <path
+                                                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2 12v9c0 .6.4 1 1 1h2" />
+                                            <path d="M14 17H9" />
+                                            <path d="M5 17h2" />
+                                            <circle cx="7" cy="17" r="2" />
+                                            <circle cx="17" cy="17" r="2" />
+                                        </svg></div>
+                                    <p><strong>07:30:</strong> <strong>PRENDERE TAXI</strong> per Palazzo d'Estate
+                                        ticket office east e visitare il parco.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-car">
+                                            <path
+                                                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2 12v9c0 .6.4 1 1 1h2" />
+                                            <path d="M14 17H9" />
+                                            <path d="M5 17h2" />
+                                            <circle cx="7" cy="17" r="2" />
+                                            <circle cx="17" cy="17" r="2" />
+                                        </svg></div>
+                                    <p><strong>11:15:</strong> <strong>PRENDERE TAXI</strong> per Lama Temple e
+                                        visitarlo.</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-landmark">
+                                            <line x1="3" x2="21" y1="22" y2="22" />
+                                            <line x1="6" x2="6" y1="18" y2="11" />
+                                            <line x1="10" x2="10" y1="18" y2="11" />
+                                            <line x1="14" x2="14" y1="18" y2="11" />
+                                            <line x1="18" x2="18" y1="18" y2="11" />
+                                            <polygon points="12 2 20 7 4 7" />
+                                        </svg></div>
+                                    <p><strong>13:30:</strong> Usciti da Lama temple dirigersi verso Tempio di confucio
+                                        e mangiare in zona.</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-landmark">
+                                            <line x1="3" x2="21" y1="22" y2="22" />
+                                            <line x1="6" x2="6" y1="18" y2="11" />
+                                            <line x1="10" x2="10" y1="18" y2="11" />
+                                            <line x1="14" x2="14" y1="18" y2="11" />
+                                            <line x1="18" x2="18" y1="18" y2="11" />
+                                            <polygon points="12 2 20 7 4 7" />
+                                        </svg></div>
+                                    <p><strong>14:30:</strong> Visitare il tempio di confucio.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>15:30:</strong> <strong>PRENDERE LA METRO</strong> YONGHEGONG Lama Temple (linea 2 BLU) Exit F south-east. Scendere a JIANGUOMEN Exit B north-east. Andare a piedi a Silk
+                                    Street Market.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-walk">
+                                            <circle cx="12" cy="5" r="1" />
+                                            <path d="M9 20l3-6 3 6" />
+                                            <path d="M6 12l6-3 6 3" />
+                                            <path d="M6 8l6 3 6-3" />
+                                        </svg></div>
+                                    <p><strong>18:00:</strong> Visitare la zona, andare in direzione metro CHAOYANGMEN.
+                                    </p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>20:00:</strong> <strong>PRENDERE LA METRO</strong> CHAOYANGMEN (linea 8 BRONZO). Scendere a DONGSI Exit G south-west. Andare a piedi a Wangfujing Night Market e mangiare
+                                    uno spiedino di scorpioni.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Giorno 13 -->
+                        <div class="border-b border-gray-200 pb-2">
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 5: 13 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-sun">
+                                            <circle cx="12" cy="12" r="4" />
+                                            <path d="M12 2v2" />
+                                            <path d="M12 20v2" />
+                                            <path d="m4.93 4.93 1.41 1.41" />
+                                            <path d="m17.66 17.66 1.41 1.41" />
+                                            <path d="M2 12h2" />
+                                            <path d="M20 12h2" />
+                                            <path d="m6.34 17.66-1.41 1.41" />
+                                            <path d="m19.07 4.93-1.41 1.41" />
+                                        </svg></div>
+                                    <p><strong>Mattina:</strong> Giornata libera.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-car">
+                                            <path
+                                                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2 12v9c0 .6.4 1 1 1h2" />
+                                            <path d="M14 17H9" />
+                                            <path d="M5 17h2" />
+                                            <circle cx="7" cy="17" r="2" />
+                                            <circle cx="17" cy="17" r="2" />
+                                        </svg></div>
+                                    <p><strong>14:30:</strong> <strong>PRENDERE TAXI</strong> per Aeroporto Beijing Capital.</p>
+                                </div>
+                                <div class="activity-item hotel-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-plane-landing">
+                                            <path d="M2 22h20" />
+                                            <path
+                                                d="M6.36 17.41 4.22 15.27a2.43 2.43 0 0 1 0-3.43l3.43-3.43a2.43 2.43 0 0 1 3.43 0l3.43 3.43a2.43 2.43 0 0 1 0 3.43l-2.14 2.14" />
+                                            <path
+                                                d="M14.24 12.24 12.12 10.12a2.43 2.43 0 0 1 0-3.43l3.43-3.43a2.43 2.43 0 0 1 3.43 0l3.43 3.43a2.43 2.43 0 0 1 0 3.43l-2.14 2.14" />
+                                            <path d="m15 13-2.5 2.5" />
+                                            <path d="M11.5 16.5 14 14" />
+                                        </svg></div>
+                                    <p><strong>18:15:</strong> <strong>VOLO</strong> per HK.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hong Kong -->
+            <div class="relative timeline-item">
+                <div class="flex items-center mb-4">
+                    <div class="z-10 bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-building-2">
+                            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18" />
+                            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+                            <path d="M10 6h4" />
+                            <path d="M10 10h4" />
+                            <path d="M10 14h4" />
+                            <path d="M10 18h4" />
+                        </svg>
+                    </div>
+                    <h3 class="ml-4 text-xl font-semibold text-gray-700">13 - 17 Agosto: Hong Kong & Macao</h3>
+                </div>
+                <div class="ml-14 bg-white p-4 rounded-lg shadow-md accordion-container">
+                    <div class="space-y-2">
+                        <!-- Giorno 13 -->
+                        <div class="border-b border-gray-200 pb-2">
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 5: 13 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item hotel-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-plane-landing">
+                                            <path d="M2 22h20" />
+                                            <path
+                                                d="M6.36 17.41 4.22 15.27a2.43 2.43 0 0 1 0-3.43l3.43-3.43a2.43 2.43 0 0 1 3.43 0l3.43 3.43a2.43 2.43 0 0 1 0 3.43l-2.14 2.14" />
+                                            <path
+                                                d="M14.24 12.24 12.12 10.12a2.43 2.43 0 0 1 0-3.43l3.43-3.43a2.43 2.43 0 0 1 3.43 0l3.43 3.43a2.43 2.43 0 0 1 0 3.43l-2.14 2.14" />
+                                            <path d="m15 13-2.5 2.5" />
+                                            <path d="M11.5 16.5 14 14" />
+                                        </svg></div>
+                                    <p><strong>21:50:</strong> Atterraggio HK terminal 1.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>23:00:</strong> <strong>PRENDERE AIRPORT EXPRESS</strong> da Aeroporto a
+                                        HONG KONG STATION. Dopo <strong>PRENDERE TAXI</strong> per Hotel.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Giorno 14 -->
+                        <div class="border-b border-gray-200 pb-2">
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 6: 14 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-coffee">
+                                            <path d="M10 2v2" />
+                                            <path d="M14 2v2" />
+                                            <path
+                                                d="M16 8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2Z" />
+                                            <path
+                                                d="M6 22h8a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2Z" />
+                                        </svg></div>
+                                    <p><strong>08:45:</strong> Uscire dall'Hotel e fare colazione relax.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>09:15:</strong> <strong>PRENDERE LA METRO</strong> a Admiralty Station
+                                        (East rail line, celeste) uscita F, <strong>CAMBIARE</strong> a Kowloon Tong station e prendere
+                                        la Kowloon Tong line (verde) e scendere a Wong Tai Sin station uscita B2. Andare
+                                        piedi a Tempio di Wong Tai Sin.</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-walk">
+                                            <circle cx="12" cy="5" r="1" />
+                                            <path d="M9 20l3-6 3 6" />
+                                            <path d="M6 12l6-3 6 3" />
+                                            <path d="M6 8l6 3 6-3" />
+                                        </svg></div>
+                                    <p><strong>10:15:</strong> Andare a piedi a Nan Lian Garden e visitarlo. Dopo
+                                        visitare Lotus Pond.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>11:30:</strong> <strong>PRENDERE LA METRO</strong> a Diamond Hill station
+                                        (Kwun Tong Line, verde) uscita C1. Scendere a Prince Edward Station uscita B2.
+                                        Andare Mongkok Market (guardare punto di inizio sulla mappa).</p>
+                                </div>
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-utensils-crossed">
+                                            <path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8Z" />
+                                            <path d="M15 15 3.34 3.34" />
+                                            <path d="m22 16-6-6" />
+                                            <path d="m8 2 1.8 1.8a3 3 0 0 1 0 4.2L7.5 10.3a3 3 0 0 1-4.2 0L2 8Z" />
+                                        </svg></div>
+                                    <p><strong>12:30:</strong> Pranzo a Dim Dim Sum Mong Kok e dopo continuare la visita
+                                        del mercato in direzione sud.</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-map-pin">
+                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                            <circle cx="12" cy="10" r="3" />
+                                        </svg></div>
+                                    <p><strong>17:00:</strong> Arrivati in fondo in fondo al mercato girare a destra e
+                                        arrivati sulla via principale andare verso la metro di Mongkok e visitare il
+                                        quartiere.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>19:30:</strong> <strong>PRENDERE LA METRO</strong> a Mongkok Station
+                                        (Tsuen Wan Line, rossa) e scendere a Tsim Sha Tsui station uscita C2. Andare a
+                                        piedi a Avenue of Stars (statua di bruce lee, guardare mappa) e aspettare lo spettacolo delle luci.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>21:00:</strong> Finita la passeggiata, <strong>PRENDERE LA METRO</strong> Tsim Sha Tsui station (Tsuen Wan Line, rossa) uscita H. Scendere a Jordan station uscita A. Andare a Temple Street
+                                    Market a mangiare.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>23:30:</strong> <strong>PRENDERE LA METRO</strong> a Jordan station (Tsuen Wan Line, rossa) uscita A. Scendere a Admiralty station uscita F. Andare all'Hotel.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Giorno 15 -->
+                        <div class="border-b border-gray-200 pb-2">
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 7: 15 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-coffee">
+                                            <path d="M10 2v2" />
+                                            <path d="M14 2v2" />
+                                            <path
+                                                d="M16 8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2Z" />
+                                            <path
+                                                d="M6 22h8a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2Z" />
+                                        </svg></div>
+                                    <p><strong>08:45:</strong> Uscire dall'Hotel e fare colazione relax.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-tram-front">
+                                            <rect width="16" height="16" x="4" y="3" rx="2" />
+                                            <path d="M4 11h16" />
+                                            <path d="M12 3v8" />
+                                            <path d="M8 19v-3" />
+                                            <path d="M16 19v-3" />
+                                            <path d="m8 9-1-1" />
+                                            <path d="m16 9 1-1" />
+                                        </svg></div>
+                                    <p><strong>09:15:</strong> Andare a piedi a Wan Chai Market e visitarlo.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>10:30:</strong> Andare a piedi a Causewaybay e visitare il quartiere.</p>
+                                </div>
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-utensils-crossed">
+                                            <path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8Z" />
+                                            <path d="M15 15 3.34 3.34" />
+                                            <path d="m22 16-6-6" />
+                                            <path d="m8 2 1.8 1.8a3 3 0 0 1 0 4.2L7.5 10.3a3 3 0 0 1-4.2 0L2 8Z" />
+                                        </svg></div>
+                                    <p><strong>12:30:</strong> Pranzare in zona.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>13:30:</strong> <strong>PRENDERE LA METRO</strong> a Causewaybay station (Island Line) e scendere a Tai Koo station uscita B. Andare a Monster Building spot (vedere
+                                    mappa).</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>14:30:</strong> <strong>PRENDERE LA METRO</strong> a Tai Koo station (Island Line) uscita B e scendere a Central station uscita C. Visitare il quartiere e andare in
+                                    direzione Central-Mid levels escalator e dopo Man Mo Temple.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>18:00:</strong> <strong>PRENDERE LA METRO</strong> a Sheung Wan station (Island Line) uscitta A2 e scendere a Wan Chai station uscita B1. Andare all'Hotel a farsi belli.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-walk">
+                                            <circle cx="12" cy="5" r="1" />
+                                            <path d="M9 20l3-6 3 6" />
+                                            <path d="M6 12l6-3 6 3" />
+                                            <path d="M6 8l6 3 6-3" />
+                                        </svg></div>
+                                    <p><strong>18:45:</strong> Andare a piedi a The Peak Tram e prendere la funicolare per The Victoria Peak. Visitare Peak Tower e godere della vista.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-car">
+                                            <path
+                                                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2 12v9c0 .6.4 1 1 1h2" />
+                                            <path d="M14 17H9" />
+                                            <path d="M5 17h2" />
+                                            <circle cx="7" cy="17" r="2" />
+                                            <circle cx="17" cy="17" r="2" />
+                                        </svg></div>
+                                    <p><strong>21:30:</strong> Prendere la funicolare e una volta scesi <strong>PRENDERE TAXI</strong> per Ozone e ubriacarsi pesantemente. <strong>(OPZIONE: Possibilità di cena a Temple street Market dopo Ozone.)</strong></p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-car">
+                                            <path
+                                                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2 12v9c0 .6.4 1 1 1h2" />
+                                            <path d="M14 17H9" />
+                                            <path d="M5 17h2" />
+                                            <circle cx="7" cy="17" r="2" />
+                                            <circle cx="17" cy="17" r="2" />
+                                        </svg></div>
+                                    <p><strong>23:30:</strong> <strong>PRENDERE TAXI</strong> per Hotel.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Giorno 16 -->
+                        <div class="border-b border-gray-200 pb-2">
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 8: 16 Agosto (Gita a Macao)</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-bus">
+                                            <path d="M8 6v6" />
+                                            <path d="M16 6v6" />
+                                            <path d="M2 12h19.6" />
+                                            <path
+                                                d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3" />
+                                            <circle cx="7" cy="18" r="2" />
+                                            <path d="M9 18h5" />
+                                            <circle cx="16" cy="18" r="2" />
+                                        </svg></div>
+                                    <p><strong>08:30:</strong> Partenza per Macao con <strong>AUTOBUS</strong> da Southorn Centre</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-walk">
+                                            <circle cx="12" cy="5" r="1" />
+                                            <path d="M9 20l3-6 3 6" />
+                                            <path d="M6 12l6-3 6 3" />
+                                            <path d="M6 8l6 3 6-3" />
+                                        </svg></div>
+                                    <p><strong>11:00:</strong> Arrivati a Macao, andare a piedi a Fortezza di San Paolo del Monte e visitarlo.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-walk">
+                                            <circle cx="12" cy="5" r="1" />
+                                            <path d="M9 20l3-6 3 6" />
+                                            <path d="M6 12l6-3 6 3" />
+                                            <path d="M6 8l6 3 6-3" />
+                                        </svg></div>
+                                    <p><strong>12:15:</strong> Passare da Rovine della cattedrale di San Paolo e andare verso Piazza Senado. Per mangiare vedere anche Rua da
+                                    Felicidade.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-walk">
+                                            <circle cx="12" cy="5" r="1" />
+                                            <path d="M9 20l3-6 3 6" />
+                                            <path d="M6 12l6-3 6 3" />
+                                            <path d="M6 8l6 3 6-3" />
+                                        </svg></div>
+                                    <p><strong>14:00:</strong> Andare a piedi a Casinò Grand Lisboa e lasciare qui tutti i soldi.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-walk">
+                                            <circle cx="12" cy="5" r="1" />
+                                            <path d="M9 20l3-6 3 6" />
+                                            <path d="M6 12l6-3 6 3" />
+                                            <path d="M6 8l6 3 6-3" />
+                                        </svg></div>
+                                    <p><strong>15:15:</strong> Andare a piedi a Macau Tower e visitare l'osservatorio.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-bus">
+                                            <path d="M8 6v6" />
+                                            <path d="M16 6v6" />
+                                            <path d="M2 12h19.6" />
+                                            <path
+                                                d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3" />
+                                            <circle cx="7" cy="18" r="2" />
+                                            <path d="M9 18h5" />
+                                            <circle cx="16" cy="18" r="2" />
+                                        </svg></div>
+                                    <p><strong>16:15:</strong> Prendere <strong>BUS</strong> 26 da Macau Tower, scendere a Rua do Cunha (fermata Edf. Jardim De Va Pou) (preparare almeno 12 MOP)</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-shopping-bag">
+                                            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                                            <path d="M3 6h18" />
+                                            <path d="M16 10a4 4 0 0 1-8 0" />
+                                        </svg></div>
+                                    <p><strong>17:00:</strong> Visitare la zona di Rua do Cunha.</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-shopping-bag">
+                                            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                                            <path d="M3 6h18" />
+                                            <path d="M16 10a4 4 0 0 1-8 0" />
+                                        </svg></div>
+                                    <p><strong>17:30:</strong> Andare a piedi a The Venetian Macao e visitarlo/giocare alle slot/comprare una borsa di Chanel.</p>
+                                </div>
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-utensils-crossed">
+                                            <path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8Z" />
+                                            <path d="M15 15 3.34 3.34" />
+                                            <path d="m22 16-6-6" />
+                                            <path d="m8 2 1.8 1.8a3 3 0 0 1 0 4.2L7.5 10.3a3 3 0 0 1-4.2 0L2 8Z" />
+                                        </svg></div>
+                                    <p><strong>19:00:</strong> Passeggiare per The Cotai Strip e vedere gli spettacoli
+                                        di luci e mangiare in zona.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-bus">
+                                            <path d="M8 6v6" />
+                                            <path d="M16 6v6" />
+                                            <path d="M2 12h19.6" />
+                                            <path
+                                                d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3" />
+                                            <circle cx="7" cy="18" r="2" />
+                                            <path d="M9 18h5" />
+                                            <circle cx="16" cy="18" r="2" />
+                                        </svg></div>
+                                    <p><strong>22:00:</strong> Partenza con <strong>AUTOBUS</strong> per HK da Londoner Macao a Wan Chai.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Giorno 17 -->
+                        <div>
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 9: 17 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-sun">
+                                            <circle cx="12" cy="12" r="4" />
+                                            <path d="M12 2v2" />
+                                            <path d="M12 20v2" />
+                                            <path d="m4.93 4.93 1.41 1.41" />
+                                            <path d="m17.66 17.66 1.41 1.41" />
+                                            <path d="M2 12h2" />
+                                            <path d="M20 12h2" />
+                                            <path d="m6.34 17.66-1.41 1.41" />
+                                            <path d="m19.07 4.93-1.41 1.41" />
+                                        </svg></div>
+                                    <p><strong>Mattina:</strong> Giornata libera.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>17:30:</strong> <strong>PRENDERE TAXI</strong> per Hong Kong West Kowloon
+                                        Station e <strong>PRENDERE IL TRENO</strong> per Shanghai (ore 20.05).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shanghai -->
+            <div class="relative timeline-item">
+                <div class="flex items-center mb-4">
+                    <div class="z-10 bg-green-500 rounded-full h-10 w-10 flex items-center justify-center text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-ship-wheel">
+                            <circle cx="12" cy="12" r="8" />
+                            <path d="M12 2v7.5" />
+                            <path d="m19.4 4.6 -5.2 5.2" />
+                            <path d="M22 12h-7.5" />
+                            <path d="m19.4 19.4-5.2-5.2" />
+                            <path d="M12 22v-7.5" />
+                            <path d="m4.6 19.4 5.2-5.2" />
+                            <path d="M2 12h7.5" />
+                            <path d="m4.6 4.6 5.2 5.2" />
+                            <circle cx="12" cy="12" r="2" />
+                        </svg>
+                    </div>
+                    <h3 class="ml-4 text-xl font-semibold text-gray-700">18 - 20 Agosto: Shanghai</h3>
+                </div>
+                <div class="ml-14 bg-white p-4 rounded-lg shadow-md accordion-container">
+                    <div class="space-y-2">
+                        <!-- Giorno 18 -->
+                        <div class="border-b border-gray-200 pb-2">
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 10: 18 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>07:00:</strong> Arrivo a Shanghai Hongqiao Railway Station.
+                                        <strong>PRENDERE METRO</strong> dalla stazione senza uscire linea 2 verde
+                                        direzione Pudong Airport, scendere a People Square Station exit 8. Andare
+                                        all'hotel a lasciare le valige.</p>
+                                </div>
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-coffee">
+                                            <path d="M10 2v2" />
+                                            <path d="M14 2v2" />
+                                            <path
+                                                d="M16 8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2Z" />
+                                            <path
+                                                d="M6 22h8a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2Z" />
+                                        </svg></div>
+                                    <p><strong>08:00:</strong> Fare colazione in relax.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>08:30:</strong> <strong>PRENDERE METRO</strong> a People Square Station
+                                        exit 7 (Linea 1 rossa) scendere a Hanzhong Road station exit 4. Andare a piedi a
+                                        Tempio del Buddha di Giada e visitarlo.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>10:30:</strong> <strong>PRENDERE METRO</strong> a Jiangning Road Station
+                                        exit 3 (Linea 13 rosa) <strong>CAMBIARE</strong> a Wuning Road station linea 14 verde direzione
+                                        Quiqiao Road, scendere a Lujiazui Station exit 9a. Andare all'osservatorio della
+                                        Shanghai Tower.</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-map-pin">
+                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                            <circle cx="12" cy="10" r="3" />
+                                        </svg></div>
+                                    <p><strong>13:00:</strong> Usciti dalla Shanghai Tower visitare il quartiere Bund
+                                        andando in direzione Pearl Tower e successivamente la passeggiata lungo il fiume
+                                        (Oriental Pearl Park - North Gate punto di partenza). Pranzare in zona.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>17:30:</strong> <strong>PRENDERE METRO</strong> a Lujiazui Station (linea
+                                        14 verde) exit 6 e scendere a Yuyuan Garden station exit 7. Andare a Yuyuan old
+                                        street e visitare la zona. Cenare qui.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>20:30:</strong> <strong>PRENDERE METRO</strong> a Yuyuan Garden station
+                                        (linea 10 lilla) exit 7 e scendere a East Nanjing Road station exit 1. Tornare
+                                        all'Hotel (passare da Nanjing Road).</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Giorno 19 -->
+                        <div class="border-b border-gray-200 pb-2">
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 11: 19 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-coffee">
+                                            <path d="M10 2v2" />
+                                            <path d="M14 2v2" />
+                                            <path
+                                                d="M16 8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2Z" />
+                                            <path
+                                                d="M6 22h8a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2Z" />
+                                        </svg></div>
+                                    <p><strong>08:30:</strong> Fare colazione in relax.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>09:00:</strong> <strong>PRENDERE METRO</strong> a East Nanjing Road station (linea 10 lilla) exit 1 e scendere a Yuyuan Garden station exit 7. Visitare Yu Garden e dopo
+                                    City God Temple Laoniu Hongmu Furniture Store e zona limitrofa.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>11:30:</strong> <strong>PRENDERE METRO</strong> a Xiaonanmen station (linea 9 azzurra) exit 3 e scendere a Dapuquiao station exit 1. Visitare Tianzifang e pranzare lì.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>14:30:</strong> <strong>PRENDERE METRO</strong> a Dapuquiao station (linea 9 azzurra) exit 1, <strong>CAMBIARE</strong> a Century Avenue Linea 2 Verde direzione Pudong Airport e
+                                    scendere a Shanghai Science and Technology Museum station exit S.C. Plaza. Andare a AP Plaza e visitarlo.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>17:30:</strong> <strong>PRENDERE METRO</strong> a Shanghai Science and Technology Museum station (linea 2 verde) exit 2, <strong>CAMBIARE</strong> a Longyang Road Linea 7 arancione
+                                    direzione Meilan Lake e scendere a Yaohua Road station exit 3. Andare a Changli Road e cenare lì.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>20:15:</strong> <strong>(Rispettare orario di partenza)</strong> <strong>PRENDERE
+                                            METRO</strong> a Yaohua Road station (linea 8 azzurro) exit 3 e scendere a
+                                        Dashijie station exit 1. Andare a piedi alla passeggiata panoramica del Bund.
+                                    </p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-walk">
+                                            <circle cx="12" cy="5" r="1" />
+                                            <path d="M9 20l3-6 3 6" />
+                                            <path d="M6 12l6-3 6 3" />
+                                            <path d="M6 8l6 3 6-3" />
+                                        </svg></div>
+                                    <p><strong>23:00:</strong> A piedi passando per Nanjing Road tornare all'Hotel.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Giorno 20 -->
+                        <div>
+                            <button class="w-full text-left flex justify-between items-center py-2 accordion-button">
+                                <span class="font-semibold text-lg">Giorno 12: 20 Agosto</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="arrow transition-transform">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content pl-4 pt-2 text-gray-600 space-y-1">
+                                <div class="activity-item food-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-coffee">
+                                            <path d="M10 2v2" />
+                                            <path d="M14 2v2" />
+                                            <path
+                                                d="M16 8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2Z" />
+                                            <path
+                                                d="M6 22h8a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2Z" />
+                                        </svg></div>
+                                    <p><strong>09:00:</strong> Fare colazione in relax.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>09:30:</strong> <strong>PRENDERE METRO</strong> a People Square Station
+                                        exit 7 (Linea 1 rossa) direzione Xinzhuang scendere a South Shaanxi Road station
+                                        exit 10. Visitare Centro comm. IAPM e Huaihai Road Commercial Street.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>12:00:</strong> <strong>PRENDERE METRO</strong> a South Shaanxi Road station exit 10 (Linea 10 lilla) scendere a Longxi Road station exit 2. Andare a piedi a Hongqiao
+                                    International Pearl City, visitarlo e pranzare lì.</p>
+                                </div>
+                                <div class="activity-item visit-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-map-pin">
+                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                            <circle cx="12" cy="10" r="3" />
+                                        </svg></div>
+                                    <p><strong>POMERIGGIO:</strong> Libero.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-train-track">
+                                            <path d="M2 17 17 2" />
+                                            <path d="m2 14 8 8" />
+                                            <path d="m6 18 8-8" />
+                                            <path d="m10 22 8-8" />
+                                            <path d="m8 6 8 8" />
+                                            <path d="M12 10 22 0" />
+                                        </svg></div>
+                                    <p><strong>18:00:</strong> <strong>PRENDERE METRO</strong> a People Square Station exit 8 (Linea 2 verde) scendere a Pudong Airport Terminal 2 exit North.</p>
+                                </div>
+                                <div class="activity-item transport-item">
+                                    <div class="activity-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-plane-landing">
+                                            <path d="M2 22h20" />
+                                            <path
+                                                d="M6.36 17.41 4.22 15.27a2.43 2.43 0 0 1 0-3.43l3.43-3.43a2.43 2.43 0 0 1 3.43 0l3.43 3.43a2.43 2.43 0 0 1 0 3.43l-2.14 2.14" />
+                                            <path
+                                                d="M14.24 12.24 12.12 10.12a2.43 2.43 0 0 1 0-3.43l3.43-3.43a2.43 2.43 0 0 1 3.43 0l3.43 3.43a2.43 2.43 0 0 1 0 3.43l-2.14 2.14" />
+                                            <path d="m15 13-2.5 2.5" />
+                                            <path d="M11.5 16.5 14 14" />
+                                        </svg></div>
+                                    <p><strong>23:35:</strong> Partenza <strong>Aereo</strong> per ritorno in Italia</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    button.classList.toggle('open');
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
