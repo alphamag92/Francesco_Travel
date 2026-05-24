@@ -449,7 +449,15 @@ p { margin: 0; text-wrap: pretty; }
 }
 
 /* media size variants */
-.media { position: relative; }
+.media { position: relative; overflow: hidden; }
+.media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .media.ar-21-9   { aspect-ratio: 21 / 9; }
 .media.ar-16-9   { aspect-ratio: 16 / 9; }
 .media.ar-3-2    { aspect-ratio: 3 / 2; }
