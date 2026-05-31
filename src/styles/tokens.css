@@ -1,0 +1,36 @@
+/* ============================================
+   Design tokens — Francesco Travels
+   Lifted from the original editorial system (css/taiwan.css).
+   OKLCH palette, fluid type/spacing, premium font stacks.
+   ============================================ */
+
+:root {
+  /* neutrals */
+  --bg:        oklch(0.97 0.008 80);
+  --bg-soft:   oklch(0.94 0.012 75);
+  --bg-deep:   oklch(0.20 0.01 60);
+  --ink:       oklch(0.20 0.01 60);
+  --ink-soft:  oklch(0.42 0.012 60);
+  --ink-mute:  oklch(0.60 0.010 60);
+  --rule:      oklch(0.86 0.012 70);
+  --rule-soft: oklch(0.90 0.010 70);
+
+  /* accents */
+  --jade:      oklch(0.50 0.08 170);
+  --jade-soft: oklch(0.92 0.025 170);
+  --terra:     oklch(0.55 0.10 40);
+  --terra-soft:oklch(0.93 0.030 40);
+
+  /* type families */
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans:  "DM Sans", "Helvetica Neue", Helvetica, sans-serif;
+  --mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* metrics */
+  --maxw: 1240px;
+  --gutter: clamp(18px, 4vw, 56px);
+}
+
+@media (max-width: 640px) {
+  :root { --gutter: 18px; }
+}

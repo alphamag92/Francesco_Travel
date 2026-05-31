@@ -1,0 +1,28 @@
+---
+import type { Itinerary } from '~/data/itineraries';
+
+interface Props {
+  itinerary: Itinerary;
+}
+
+const { itinerary: it } = Astro.props;
+---
+<section class="hero">
+  <div class="page">
+    <div class="hero-eyebrow">
+      {it.heroEyebrows.map((eyebrow) => (
+        <span class="eyebrow">{eyebrow}</span>
+      ))}
+    </div>
+    <h1 class="serif" set:html={it.heroTitleHtml} />
+
+    <div class="hero-meta">
+      {it.heroMeta.map((cell) => (
+        <div class="cell">
+          <div class="k">{cell.k}</div>
+          <div class="v">{cell.v}{cell.sub && <small>{cell.sub}</small>}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

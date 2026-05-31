@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alphamag92.github.io/Francesco_Travel/sitemap-index.xml

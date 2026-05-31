@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import type { Itinerary } from '~/data/itineraries';
+import { withBase } from '~/lib/paths';
+import { CONTINENT_LABELS } from '~/lib/taxonomy';
+
+interface Props {
+  itinerary: Itinerary;
+  loading?: 'eager' | 'lazy';
+}
+const { itinerary: it, loading = 'lazy' } = Astro.props;
+const href = withBase(`itinerari/${it.slug}`);
+const continentLabel = CONTINENT_LABELS[it.continent];
+const durationLabel = `${it.durationDays} giorni`;
+---
+<a class="itin-card" href={href} aria-label={`${it.title} — ${durationLabel}`}>
+  <div class="itin-card__media media ar-3-2">
+    <Image
+      src={it.coverImage}
+      alt={it.coverAlt}
+      widths={[400, 600, 800]}
+      sizes="(max-width: 640px) 92vw, 380px"
+      loading={loading}
+    />
+  </div>
+  <div class="itin-card__body">
+    <div class="itin-card__eyebrow">
+      <span>{continentLabel}</span>
+      <span class="dot">·</span>
+      <span>{durationLabel}</span>
+    </div>
+    <h3 class="itin-card__title">{it.title}</h3>
+    <p class="itin-card__summary">{it.summary}</p>
+    {it.tags.length > 0 && (
+      <div class="itin-card__tags">
+        {it.tags.slice(0, 4).map((t) => <span class="tag">{t}</span>)}
+      </div>
+    )}
+  </div>
+</a>

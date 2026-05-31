@@ -1,0 +1,18 @@
+---
+import type { Itinerary } from '~/data/itineraries';
+
+interface Props {
+  logistics: Itinerary['logistics'];
+}
+
+const { logistics } = Astro.props;
+---
+<section class="page logi">
+  {logistics.map((card) => (
+    <div class="card">
+      <div class="k">{card.k}</div>
+      <div class="v">{card.v}</div>
+      <p>{card.body}</p>
+    </div>
+  ))}
+</section>
