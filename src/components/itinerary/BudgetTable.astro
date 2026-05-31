@@ -1,0 +1,56 @@
+---
+import type { Itinerary } from '~/data/itineraries';
+
+interface Props {
+  budget: Itinerary['budget'];
+}
+
+const { budget } = Astro.props;
+const isTwd = budget.columns === 'twd-eur';
+---
+<section class="page budget" id="budget">
+  <header>
+    <h2 class="serif">Budget <em>· persona</em></h2>
+    <div class="totals">
+      <div class="t">
+        <div class="k">Totale · persona</div>
+        <div class="v">{budget.amount} €</div>
+      </div>
+      {budget.withFlightTotal && (
+        <div class="t">
+          <div class="k">Con volo</div>
+          <div class="v">{budget.withFlightTotal}</div>
+        </div>
+      )}
+      {budget.altTotal && (
+        <div class="t">
+          <div class="k">{budget.altTotal.label}</div>
+          <div class="v">{budget.altTotal.value}</div>
+        </div>
+      )}
+    </div>
+  </header>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Voci</th>
+        {isTwd && <th style="text-align:right;">TWD</th>}
+        <th style="text-align:right;">EUR</th>
+        <th>Stato</th>
+      </tr>
+    </thead>
+    <tbody>
+      {budget.rows.map((row) => (
+        <tr class:list={[{ total: row.total }]}>
+          <td class="cat">{row.category}</td>
+          <td class="desc">{row.desc}</td>
+          {isTwd && <td class="num">{row.twd}</td>}
+          <td class="num">{row.eur}</td>
+          <td class="status">{row.status}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</section>

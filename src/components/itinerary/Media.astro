@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image: ImageMetadata;
+  alt: string;
+  aspectRatio: string;
+  feature?: boolean;
+}
+
+const { image, alt, aspectRatio, feature = false } = Astro.props;
+---
+<div class:list={['media', `ar-${aspectRatio}`, { 'media-feature': feature }]}>
+  <Image
+    src={image}
+    alt={alt}
+    widths={[640, 960, 1400]}
+    sizes="(max-width:820px) 92vw, 760px"
+    loading="lazy"
+  />
+</div>

@@ -1,0 +1,74 @@
+---
+import '~/styles/tokens.css';
+import '~/styles/base.css';
+import { ClientRouter } from 'astro:transitions';
+import Seo from '~/components/site/Seo.astro';
+import Analytics from '~/components/site/Analytics.astro';
+import AnalyticsNoscript from '~/components/site/AnalyticsNoscript.astro';
+import SiteHeader from '~/components/site/SiteHeader.astro';
+import SiteFooter from '~/components/site/SiteFooter.astro';
+import { withBase } from '~/lib/paths';
+import { SITE_LANG } from '~/lib/seo';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  ogImageAbsolute?: string;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
+  /** itinerary detail pages provide their own topbar, so hide the site header */
+  header?: boolean;
+  footer?: boolean;
+  mainClass?: string;
+}
+
+const {
+  title,
+  description,
+  ogImage,
+  ogImageAbsolute,
+  type,
+  jsonLd,
+  noindex,
+  header = true,
+  footer = true,
+  mainClass,
+} = Astro.props;
+---
+<!doctype html>
+<html lang={SITE_LANG}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href={withBase('favicon.svg')} type="image/svg+xml" />
+    <meta name="generator" content={Astro.generator} />
+    <Analytics />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <Seo
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      ogImageAbsolute={ogImageAbsolute}
+      type={type}
+      jsonLd={jsonLd}
+      noindex={noindex}
+    />
+    <ClientRouter />
+  </head>
+  <body>
+    <AnalyticsNoscript />
+    <a href="#main" class="skip-link">Salta al contenuto</a>
+    {header && <SiteHeader />}
+    <main id="main" class={mainClass}>
+      <slot />
+    </main>
+    {footer && <SiteFooter />}
+  </body>
+</html>

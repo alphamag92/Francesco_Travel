@@ -1,0 +1,72 @@
+---
+import { getImage } from 'astro:assets';
+import { getAllItineraries } from '~/data/itineraries';
+import type { Itinerary } from '~/data/itineraries';
+import { canonicalUrl } from '~/lib/seo';
+import ItineraryLayout from '~/layouts/ItineraryLayout.astro';
+import ItineraryTopbar from '~/components/itinerary/ItineraryTopbar.astro';
+import ChapterSideNav from '~/components/itinerary/ChapterSideNav.astro';
+import ItineraryHero from '~/components/itinerary/ItineraryHero.astro';
+import RouteMap from '~/components/itinerary/RouteMap.astro';
+import ChapterIntro from '~/components/itinerary/ChapterIntro.astro';
+import DayCard from '~/components/itinerary/DayCard.astro';
+import BudgetTable from '~/components/itinerary/BudgetTable.astro';
+import LogisticsCards from '~/components/itinerary/LogisticsCards.astro';
+
+export async function getStaticPaths() {
+  return getAllItineraries().map((it) => ({
+    params: { slug: it.slug },
+    props: { itinerary: it },
+  }));
+}
+
+interface Props {
+  itinerary: Itinerary;
+}
+
+const { itinerary: it } = Astro.props;
+
+// Absolute, optimized OG image.
+const og = await getImage({ src: it.coverImage, width: 1200, format: 'jpg' });
+const ogImageAbsolute = new URL(og.src, Astro.site).href;
+
+const canonical = canonicalUrl(Astro.url.pathname, Astro.site);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristTrip',
+  name: it.title,
+  description: it.summary,
+  url: canonical,
+};
+---
+<ItineraryLayout
+  title={it.title}
+  description={it.summary}
+  ogImageAbsolute={ogImageAbsolute}
+  jsonLd={jsonLd}
+>
+  <ItineraryTopbar itinerary={it} />
+  <ChapterSideNav chapters={it.chapters} />
+
+  {/* Each section owns its own `.page` (max-width + gutters) to preserve the
+      original full-bleed editorial layout — see the source HTML pages. */}
+  <ItineraryHero itinerary={it} />
+  <RouteMap itinerary={it} />
+
+  {it.chapters.map((chapter) => (
+    <>
+      <ChapterIntro chapter={chapter} />
+      {chapter.days.map((day) => (
+        <DayCard day={day} />
+      ))}
+    </>
+  ))}
+
+  <BudgetTable budget={it.budget} />
+  <LogisticsCards logistics={it.logistics} />
+
+  <footer class="page foot">
+    <div class="mk">{it.footerMark}</div>
+    <div class="meta">{it.country} · {it.published}</div>
+  </footer>
+</ItineraryLayout>

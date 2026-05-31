@@ -1,0 +1,39 @@
+---
+import type { Itinerary } from '~/data/itineraries';
+
+interface Props {
+  itinerary: Itinerary;
+}
+
+const { itinerary: it } = Astro.props;
+---
+<section class="page route">
+  <div class="map-slot">
+    <iframe
+      class="gmap"
+      src={it.mapEmbedUrl}
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Mappa del viaggio"
+    ></iframe>
+    <a class="gmap-link mono" href={it.mapEditUrl} target="_blank" rel="noopener">
+      Apri su Google Maps
+    </a>
+  </div>
+
+  <div>
+    <div class="eyebrow" style="margin-bottom:18px;">La rotta</div>
+    <h2 class="serif" set:html={it.routeHeadlineHtml} />
+    <p class="lede">{it.routeLede}</p>
+
+    <ol class="legs">
+      {it.legs.map((leg) => (
+        <li>
+          <span class="n">{leg.n}</span>
+          <span class="name">{leg.name}<small>{leg.sub}</small></span>
+          <span class="days">{leg.days}</span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

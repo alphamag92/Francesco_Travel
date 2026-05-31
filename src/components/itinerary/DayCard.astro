@@ -1,0 +1,71 @@
+---
+import type { Itinerary } from '~/data/itineraries';
+import Media from './Media.astro';
+
+type Day = Itinerary['chapters'][number]['days'][number];
+
+interface Props {
+  day: Day;
+}
+
+const { day } = Astro.props;
+
+// A media-pair is exactly two non-feature images shown side by side;
+// otherwise every image is rendered full-bleed as a feature.
+const nonFeature = day.images.filter((img) => !img.feature);
+const isPair = day.images.length === 2 && nonFeature.length === day.images.length;
+const featureImages = day.images.filter((img) => img.feature);
+---
+<article class="day">
+  <aside class="stub">
+    <div class="dnum">{day.dayNumber}</div>
+    <div class="dlab">{day.label}</div>
+    <div class="pin">{day.location}</div>
+  </aside>
+  <div class="body">
+    {isPair ? (
+      <div class="media-pair">
+        {day.images.map((img) => (
+          <Media image={img.src} alt={img.alt} aspectRatio={img.aspectRatio} />
+        ))}
+      </div>
+    ) : (
+      featureImages.map((img) => (
+        <Media image={img.src} alt={img.alt} aspectRatio={img.aspectRatio} feature />
+      ))
+    )}
+
+    <h3 class="serif">{day.title}</h3>
+
+    {day.activities.length > 0 && (
+      <div class="activities">
+        {day.activities.map((activity) => (
+          <div class="a">
+            <div class="when">{activity.when}</div>
+            <div class="what">{activity.what}</div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {day.notes.map((note) => (
+      <aside class:list={['note', { terra: note.variant === 'terra' }]}>
+        {note.text}{note.source && <span class="src">{note.source}</span>}
+      </aside>
+    ))}
+
+    {day.pois.length > 0 && (
+      <div class="pois">
+        <div class="label">Punti d'interesse</div>
+        <ul>
+          {day.pois.map((poi) => (
+            <li>
+              <span class="nm">{poi.name}</span>
+              <span class="co">{poi.lat.toFixed(4)}, {poi.lon.toFixed(4)}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</article>

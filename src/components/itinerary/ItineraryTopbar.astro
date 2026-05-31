@@ -1,0 +1,37 @@
+---
+import type { Itinerary } from '~/data/itineraries';
+import { withBase } from '~/lib/paths';
+import { SITE_NAME } from '~/lib/seo';
+
+interface Props {
+  itinerary: Itinerary;
+}
+
+const { itinerary: it } = Astro.props;
+---
+<header class="topbar">
+  <div class="mark-group">
+    <a class="mark" href={withBase('')}><span class="dot"></span>{SITE_NAME}</a>
+    <a href={withBase('itinerari')}>← Itinerari</a>
+  </div>
+  <div class="right">
+    <span class="kv"><i>Durata</i>{it.durationDays} giorni</span>
+    <span class="kv"><i>Viaggiatori</i>{it.travelers}</span>
+    <span class="kv"><i>Data</i>{it.published}</span>
+  </div>
+</header>
+
+<style>
+  .topbar .mark-group {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 18px;
+  }
+  .topbar .mark-group a {
+    text-decoration: none;
+    color: var(--ink-mute);
+  }
+  .topbar .mark-group a.mark {
+    color: var(--ink);
+  }
+</style>

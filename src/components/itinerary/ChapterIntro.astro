@@ -1,0 +1,18 @@
+---
+import type { Itinerary } from '~/data/itineraries';
+
+interface Props {
+  chapter: Itinerary['chapters'][number];
+}
+
+const { chapter } = Astro.props;
+---
+<section class="page section-intro" id={chapter.id}>
+  <div class="row">
+    <span class="chap">{chapter.chapterTag}</span>
+    <div></div>
+    {chapter.coords && <span class="coords">{chapter.coords}</span>}
+  </div>
+  <h2 class="serif" set:html={chapter.headlineHtml} />
+  <p class="blurb">{chapter.blurb}</p>
+</section>

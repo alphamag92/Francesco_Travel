@@ -1,0 +1,82 @@
+/* ============================================
+   Itinerary cards + grid (shared by the landing's
+   server-rendered cards AND the React filter island).
+   Class-based (no scoped styles) so both stay visually identical.
+   ============================================ */
+
+.itin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: clamp(20px, 3vw, 36px);
+}
+
+.itin-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.itin-card:hover,
+.itin-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px color-mix(in oklab, var(--ink) 12%, transparent);
+  border-color: var(--ink);
+  outline: none;
+}
+.itin-card:focus-visible { outline: 2px solid var(--terra); outline-offset: 3px; }
+
+.itin-card__media { width: 100%; }
+.itin-card__media img { transition: transform 0.45s ease; }
+.itin-card:hover .itin-card__media img { transform: scale(1.04); }
+
+.itin-card__body {
+  padding: 22px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.itin-card__eyebrow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.itin-card__eyebrow .dot { color: var(--terra); }
+.itin-card__title {
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.itin-card__summary {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.itin-card__tags {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 8px;
+}
+.itin-card__tags .tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 4px 10px;
+}

@@ -1,0 +1,307 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import ItineraryCard from '~/components/cards/ItineraryCard.astro';
+import { getFeaturedItineraries } from '~/data/itineraries';
+import { withBase } from '~/lib/paths';
+import { SITE, AUTHOR } from '~/data/site';
+import { SITE_NAME, SITE_DESCRIPTION } from '~/lib/seo';
+import '~/styles/cards.css';
+
+const featured = getFeaturedItineraries();
+
+// Canonical site root (base-prefixed) for structured data.
+const siteRoot = new URL(import.meta.env.BASE_URL, Astro.site).href;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: siteRoot,
+    description: SITE_DESCRIPTION,
+    inLanguage: 'it',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: AUTHOR.name,
+    jobTitle: AUTHOR.role,
+    url: siteRoot,
+    worksFor: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: siteRoot,
+    },
+  },
+];
+
+// Author the hero markup ourselves so the accent word can be emphasised
+// in terracotta via <em>. Mirrors SITE.tagline wording.
+const heroHeadlineHtml =
+  'Itinerari di viaggio, <em>raccontati</em> come si deve.';
+
+const pillars = [
+  {
+    k: '01',
+    title: 'Rotte studiate',
+    body: 'Ogni giorno ha una logica: distanze, tempi e tappe pensati perché il viaggio scorra senza forzature.',
+  },
+  {
+    k: '02',
+    title: 'Budget reali',
+    body: 'Cifre verificate sul campo, voce per voce. Niente stime ottimistiche: sai quanto spendi prima di partire.',
+  },
+  {
+    k: '03',
+    title: 'Logistica senza sorprese',
+    body: 'Trasporti, prenotazioni e dritte pratiche, così resti concentrato sui posti e non sugli imprevisti.',
+  },
+];
+---
+
+<BaseLayout title={SITE.name} description={SITE.description} jsonLd={jsonLd}>
+  <!-- HERO -->
+  <section class="page hero">
+    <p class="eyebrow">Francesco Travels</p>
+    <h1 class="hero__title serif" set:html={heroHeadlineHtml}></h1>
+    <p class="hero__lede">{SITE.description}</p>
+    <div class="hero__cta">
+      <a class="btn" href={withBase('itinerari')}>Esplora gli itinerari</a>
+      <a class="btn-ghost btn" href={withBase('analisi')}>Leggi le analisi</a>
+    </div>
+  </section>
+
+  <hr class="page rule" />
+
+  <!-- FEATURED ITINERARIES -->
+  <section class="page section">
+    <header class="section__head">
+      <p class="eyebrow">In evidenza</p>
+      <h2 class="section__title serif">Itinerari in evidenza</h2>
+      <p class="section__lede">
+        Una selezione dei viaggi raccontati per intero, giorno per giorno, con
+        rotta, budget e logistica.
+      </p>
+    </header>
+
+    <div class="itin-grid">
+      {featured.map((it, i) => (
+        <ItineraryCard itinerary={it} loading={i === 0 ? 'eager' : 'lazy'} />
+      ))}
+    </div>
+
+    <p class="section__more">
+      <a class="btn-ghost btn" href={withBase('itinerari')}>Tutti gli itinerari</a>
+    </p>
+  </section>
+
+  <hr class="page rule" />
+
+  <!-- THREE-PILLAR APPROACH -->
+  <section class="page section">
+    <header class="section__head">
+      <p class="eyebrow">Il metodo</p>
+      <h2 class="section__title serif">Come nasce un itinerario</h2>
+    </header>
+
+    <div class="pillars">
+      {pillars.map((p) => (
+        <article class="pillar">
+          <span class="pillar__k mono">{p.k}</span>
+          <h3 class="pillar__title serif">{p.title}</h3>
+          <p class="pillar__body">{p.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <hr class="page rule" />
+
+  <!-- TEASER ROW: Analisi / Chi sono / Chatbot -->
+  <section class="page section teasers">
+    <a class="teaser" href={withBase('analisi')}>
+      <p class="eyebrow">Analisi</p>
+      <h3 class="teaser__title serif">Dati per viaggiare meglio</h3>
+      <p class="teaser__body">
+        Prezzi, stagionalità e strategie di prenotazione, messi in fila per
+        scelte più intelligenti.
+      </p>
+      <span class="teaser__arrow mono" aria-hidden="true">→</span>
+    </a>
+
+    <a class="teaser" href={withBase('chi-sono')}>
+      <p class="eyebrow">Chi sono</p>
+      <h3 class="teaser__title serif">La persona dietro le rotte</h3>
+      <p class="teaser__body">
+        Chi costruisce questi viaggi e con quale cura ogni tappa viene
+        progettata.
+      </p>
+      <span class="teaser__arrow mono" aria-hidden="true">→</span>
+    </a>
+
+    <div class="teaser teaser--soon" aria-disabled="true">
+      <p class="eyebrow">Chatbot</p>
+      <h3 class="teaser__title serif">Assistente di viaggio</h3>
+      <p class="teaser__body">
+        Presto potrai costruire il tuo itinerario in conversazione.
+      </p>
+      <span class="chip mono">In arrivo</span>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---------- HERO ---------- */
+  .hero {
+    padding-top: clamp(56px, 10vw, 140px);
+    padding-bottom: clamp(48px, 7vw, 96px);
+  }
+  .hero__title {
+    font-size: clamp(48px, 9vw, 116px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    max-width: 16ch;
+    margin: clamp(18px, 3vw, 28px) 0;
+  }
+  .hero__title :global(em) {
+    font-style: italic;
+    color: var(--terra);
+  }
+  .hero__lede {
+    max-width: 52ch;
+    font-size: clamp(17px, 2.2vw, 21px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: clamp(28px, 4vw, 44px);
+  }
+
+  /* ---------- generic section rhythm ---------- */
+  .section {
+    padding-top: clamp(48px, 7vw, 96px);
+    padding-bottom: clamp(48px, 7vw, 96px);
+  }
+  .section__head {
+    max-width: 56ch;
+    margin-bottom: clamp(32px, 4vw, 52px);
+  }
+  .section__title {
+    font-size: clamp(32px, 5vw, 60px);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin: 14px 0 16px;
+  }
+  .section__lede {
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+  .section__more {
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+
+  /* horizontal rules already use .rule; constrain to page gutters */
+  .rule {
+    width: auto;
+  }
+
+  /* ---------- three-pillar strip ---------- */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(28px, 4vw, 56px);
+  }
+  .pillar {
+    border-top: 2px solid var(--ink);
+    padding-top: 20px;
+  }
+  .pillar__k {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--terra);
+    margin-bottom: 14px;
+  }
+  .pillar__title {
+    font-size: clamp(22px, 2.6vw, 28px);
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .pillar__body {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- teaser row ---------- */
+  .teasers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(18px, 2.5vw, 28px);
+  }
+  .teaser {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: clamp(22px, 3vw, 30px);
+    transition: border-color 0.2s ease, transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  a.teaser:hover,
+  a.teaser:focus-visible {
+    border-color: var(--ink);
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px color-mix(in oklab, var(--ink) 12%, transparent);
+    outline: none;
+  }
+  a.teaser:focus-visible {
+    outline: 2px solid var(--terra);
+    outline-offset: 3px;
+  }
+  .teaser__title {
+    font-size: clamp(21px, 2.4vw, 26px);
+    letter-spacing: -0.02em;
+  }
+  .teaser__body {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .teaser__arrow {
+    margin-top: auto;
+    padding-top: 8px;
+    font-size: 16px;
+    color: var(--terra);
+  }
+  .teaser--soon {
+    background: var(--bg-soft);
+    border-style: dashed;
+    color: var(--ink-mute);
+  }
+  .teaser--soon .teaser__body {
+    color: var(--ink-mute);
+  }
+  .chip {
+    margin-top: auto;
+    align-self: flex-start;
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 5px 12px;
+  }
+</style>

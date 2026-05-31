@@ -1,0 +1,17 @@
+---
+import type { Itinerary } from '~/data/itineraries';
+
+interface Props {
+  chapters: Itinerary['chapters'];
+}
+
+const { chapters } = Astro.props;
+---
+<nav class="sidenav" aria-label="Capitoli">
+  {chapters.map((chapter) => (
+    <a href={`#${chapter.id}`}>
+      <span class="bar"></span><span class="lbl">{chapter.label}</span>
+    </a>
+  ))}
+  <a href="#budget"><span class="bar"></span><span class="lbl">Budget</span></a>
+</nav>

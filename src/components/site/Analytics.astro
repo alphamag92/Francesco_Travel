@@ -1,0 +1,23 @@
+---
+import { GTM_ID } from '~/data/site';
+---
+{/* Google Tag Manager — head */}
+<script is:inline define:vars={{ GTM_ID }}>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', GTM_ID);
+</script>
+{/* Push a pageview on each client-side (View Transitions) navigation */}
+<script is:inline>
+  document.addEventListener('astro:page-load', function () {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'spa_pageview', page_path: location.pathname + location.search });
+  });
+</script>
