@@ -13,7 +13,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px var(--gutter);
+  /* full-width bar, but content aligned to the centered .page container */
+  padding: 18px max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)));
   border-bottom: 1px solid var(--rule);
   font-family: var(--mono);
   font-size: 11px;
@@ -215,7 +216,9 @@
    ============================================ */
 
 .day {
-  padding: clamp(40px, 5vw, 72px) 0;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: clamp(40px, 5vw, 72px) var(--gutter);
   border-top: 1px solid var(--rule);
   display: grid;
   grid-template-columns: 100px 1fr;
@@ -482,7 +485,7 @@
   .section-intro h2 { font-size: 44px; margin-top: 8px; }
   .section-intro .blurb { font-size: 15.5px; margin-top: 18px; }
 
-  .day { padding: 36px 0; gap: 22px; }
+  .day { padding: 36px var(--gutter); gap: 22px; }
   .day .stub { display: flex; align-items: center; justify-content: flex-start; gap: 16px; flex-wrap: wrap; }
   .day .stub .dnum { font-size: 44px; }
   .day .stub .dlab { margin-top: 0; }
