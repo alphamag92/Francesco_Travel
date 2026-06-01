@@ -30,7 +30,7 @@ Utile anche `npm run check` per il solo typecheck.
 - `src/lib/` — `paths.ts` (`withBase`), `taxonomy.ts`, `seo.ts`
 - `src/styles/` — design tokens OKLCH + CSS di base/itinerario/card
 - `src/assets/` — immagini ottimizzate (`astro:assets`)
-- `public/` — `favicon.svg`, `robots.txt`, `.nojekyll`, `og/`
+- `public/` — `favicon.png`, `apple-touch-icon.png`, `robots.txt`, `.nojekyll`, `og/`
 - `backup/` — vecchio sito statico, solo per riferimento (fuori dalla build)
 
 Per i dettagli e le convenzioni del progetto vedi **[CLAUDE.md](./CLAUDE.md)**.

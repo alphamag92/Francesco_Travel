@@ -70,7 +70,8 @@ Guidance for Claude Code when working in this repository.
 ### Assets & static
 - **`src/assets/itineraries/{taiwan,cina}/`** — optimized itinerary/day images (imported by data modules, rendered with `astro:assets`).
 - **`src/assets/FRA.jpg`** — author photo.
-- **`public/`** — `favicon.svg`, `robots.txt`, `.nojekyll`, and `og/` (social share images).
+- **`src/assets/logo.webp`** — site logo (rendered in `SiteHeader` via `astro:assets`).
+- **`public/`** — `favicon.png`, `apple-touch-icon.png`, `robots.txt`, `.nojekyll`, and `og/` (social share images).
   - **TODO:** add `og/default.jpg`, `og/taiwan.jpg`, `og/cina.jpg`. Until they exist, OG/Twitter images fall back to the `og/default.jpg` path (the `Seo` default).
 - **`backup/`** — archived pre-Astro static site (html/css/images). **NOT part of the build** — backup/reference only.
 

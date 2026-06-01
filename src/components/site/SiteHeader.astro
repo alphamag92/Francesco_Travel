@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import { NAV, SITE } from '~/data/site';
 import { withBase } from '~/lib/paths';
+import logo from '~/assets/logo.webp';
 
 const current = Astro.url.pathname.replace(/\/+$/, '');
 function isActive(path: string): boolean {
@@ -12,7 +14,10 @@ function isActive(path: string): boolean {
 ---
 <header class="site-header" data-header>
   <div class="page bar">
-    <a class="brand" href={withBase('')} aria-label={`${SITE.name} — home`}>{SITE.name}</a>
+    <a class="brand" href={withBase('')} aria-label={`${SITE.name} — home`}>
+      <Image class="brand__mark" src={logo} alt="" width={96} height={96} loading="eager" />
+      <span class="brand__text">{SITE.name}</span>
+    </a>
     <button
       class="nav-toggle"
       type="button"
@@ -62,12 +67,17 @@ function isActive(path: string): boolean {
     padding-bottom: 16px;
   }
   .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-family: var(--serif);
     font-size: 20px;
     letter-spacing: -0.01em;
     text-decoration: none;
     color: var(--ink);
   }
+  .brand__mark { height: 34px; width: auto; display: block; }
+  .brand__text { display: inline-block; }
   .nav ul {
     list-style: none;
     display: flex;
@@ -152,6 +162,7 @@ function isActive(path: string): boolean {
   @media (max-width: 640px) {
     .nav-toggle { display: inline-flex; }
     .brand { font-size: 18px; }
+    .brand__mark { height: 30px; }
     .nav {
       position: absolute;
       top: 100%;
