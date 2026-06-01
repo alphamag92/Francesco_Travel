@@ -10,10 +10,20 @@ function isActive(path: string): boolean {
   return current === href || current.startsWith(href + '/');
 }
 ---
-<header class="site-header">
+<header class="site-header" data-header>
   <div class="page bar">
     <a class="brand" href={withBase('')} aria-label={`${SITE.name} — home`}>{SITE.name}</a>
-    <nav class="nav" aria-label="Navigazione principale">
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Apri il menu"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      data-nav-toggle
+    >
+      <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Navigazione principale" data-nav>
       <ul>
         {NAV.map((item) => (
           <li>
@@ -34,6 +44,7 @@ function isActive(path: string): boolean {
     </nav>
   </div>
 </header>
+<div class="nav-backdrop" data-nav-backdrop></div>
 <style>
   .site-header {
     position: sticky;
@@ -103,12 +114,172 @@ function isActive(path: string): boolean {
     padding: 2px 6px;
     color: var(--ink-mute);
   }
+
+  /* ---- Mobile menu toggle (hamburger ↔ close) ---- */
+  .nav-toggle {
+    display: none;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .nav-toggle:focus-visible { outline: 2px solid var(--terra); outline-offset: 3px; }
+  .nav-toggle__bars { position: relative; width: 22px; height: 14px; }
+  .nav-toggle__bars span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform 0.22s ease, opacity 0.15s ease;
+  }
+  .nav-toggle__bars span:nth-child(1) { top: 0; }
+  .nav-toggle__bars span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+  .nav-toggle__bars span:nth-child(3) { bottom: 0; }
+  .site-header.is-nav-open .nav-toggle__bars span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+  .site-header.is-nav-open .nav-toggle__bars span:nth-child(2) { opacity: 0; }
+  .site-header.is-nav-open .nav-toggle__bars span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+  .nav-backdrop { display: none; }
+  :global(html.nav-open) { overflow: hidden; }
+
   @media (max-width: 640px) {
-    .bar { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .nav { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .nav ul { gap: 18px; white-space: nowrap; }
+    .nav-toggle { display: inline-flex; }
     .brand { font-size: 18px; }
-    .nav-link { font-size: 10px; letter-spacing: 0.1em; }
-    .soon { display: none; }
+    .nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      box-shadow: 0 18px 40px color-mix(in oklab, var(--ink) 10%, transparent);
+      transform: translateY(-12px);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.22s ease, opacity 0.22s ease, visibility 0s linear 0.22s;
+    }
+    .nav ul { flex-direction: column; gap: 0; padding: 6px var(--gutter) 14px; }
+    .nav li { width: 100%; }
+    .nav-link,
+    .nav-link.is-disabled {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: 52px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      border-top: 1px solid var(--rule-soft);
+      padding: 6px 0;
+    }
+    .nav-link.is-active::after { display: none; }
+    .site-header.is-nav-open .nav {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      transition: transform 0.22s ease, opacity 0.22s ease, visibility 0s;
+    }
+    .nav-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 55;
+      background: color-mix(in oklab, var(--ink) 28%, transparent);
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease;
+    }
+    .site-header.is-nav-open ~ .nav-backdrop { opacity: 1; pointer-events: auto; }
   }
 </style>
+
+<script>
+  interface NavEls {
+    header: HTMLElement;
+    toggle: HTMLElement;
+    nav: HTMLElement;
+    backdrop: HTMLElement | null;
+  }
+
+  let els: NavEls | null = null;
+  const isOpen = () => !!els && els.header.classList.contains('is-nav-open');
+
+  function openNav() {
+    if (!els) return;
+    els.header.classList.add('is-nav-open');
+    els.toggle.setAttribute('aria-expanded', 'true');
+    els.toggle.setAttribute('aria-label', 'Chiudi il menu');
+    document.documentElement.classList.add('nav-open');
+    // Defer to a macrotask so it runs after the toggle's own click-focus,
+    // which otherwise wins the focus on some (notably view-transitioned) pages.
+    const target = els.nav.querySelector<HTMLElement>('a, button');
+    if (target) setTimeout(() => target.focus(), 0);
+  }
+
+  function closeNav(restoreFocus = true) {
+    if (!isOpen() || !els) return;
+    els.header.classList.remove('is-nav-open');
+    els.toggle.setAttribute('aria-expanded', 'false');
+    els.toggle.setAttribute('aria-label', 'Apri il menu');
+    document.documentElement.classList.remove('nav-open');
+    if (restoreFocus) els.toggle.focus();
+  }
+
+  function initMobileNav() {
+    const header = document.querySelector<HTMLElement>('[data-header]');
+    const toggle = document.querySelector<HTMLElement>('[data-nav-toggle]');
+    const nav = document.querySelector<HTMLElement>('[data-nav]');
+    const backdrop = document.querySelector<HTMLElement>('[data-nav-backdrop]');
+    if (!header || !toggle || !nav) {
+      els = null;
+      return;
+    }
+    els = { header, toggle, nav, backdrop };
+    // Bind listeners once per element (astro:page-load may re-run init on a
+    // persisted header; double-binding would make one click open-then-close).
+    if (toggle.dataset.bound) return;
+    toggle.dataset.bound = 'true';
+    toggle.addEventListener('click', () => (isOpen() ? closeNav() : openNav()));
+    backdrop?.addEventListener('click', () => closeNav());
+    nav.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement | null)?.closest('a')) closeNav(false);
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (!isOpen() || !els) return;
+    if (e.key === 'Escape') {
+      closeNav();
+      return;
+    }
+    if (e.key === 'Tab') {
+      const f = [els.toggle, ...els.nav.querySelectorAll<HTMLElement>('a[href], button')].filter(
+        (el) => el.offsetParent !== null,
+      );
+      if (!f.length) return;
+      const first = f[0];
+      const last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  document.addEventListener('astro:before-swap', () => {
+    document.documentElement.classList.remove('nav-open');
+    els = null;
+  });
+
+  document.addEventListener('astro:page-load', initMobileNav);
+</script>

@@ -76,7 +76,7 @@
 /* ---- KPI cards ---- */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   gap: 1px;
   background: var(--rule);
   border: 1px solid var(--rule);
@@ -129,7 +129,7 @@
 
 .compare-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: 16px;
 }
 
@@ -194,7 +194,7 @@
 /* ---- Booking tips ---- */
 .tips-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 16px;
   list-style: none;
   padding: 0;
@@ -355,4 +355,10 @@
   color: var(--ink-mute);
   max-width: 64ch;
   margin: 0;
+}
+
+/* ---- Touch targets (mobile) ---- */
+@media (max-width: 640px) {
+  .dash-tab,
+  .region-btn { min-height: 44px; padding-block: 0; display: inline-flex; align-items: center; }
 }

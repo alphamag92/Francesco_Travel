@@ -523,7 +523,7 @@
   .foot .mk { font-size: 30px; }
   .foot .meta { text-align: left; font-size: 10px; }
 
-  .route .map-slot .gmap-link { left: 10px; bottom: 10px; font-size: 9.5px; padding: 6px 10px; }
+  .route .map-slot .gmap-link { left: 10px; bottom: 10px; font-size: 9.5px; padding: 8px 12px; min-height: 40px; display: inline-flex; align-items: center; }
 }
 
 /* Ultra-narrow tweaks (≤ 380px) */

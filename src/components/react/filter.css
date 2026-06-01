@@ -103,3 +103,8 @@
   letter-spacing: -0.01em;
   color: var(--ink-soft);
 }
+
+/* ---- Touch targets (mobile) ---- */
+@media (max-width: 640px) {
+  .itin-chip { min-height: 44px; padding-block: 0; display: inline-flex; align-items: center; }
+}

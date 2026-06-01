@@ -127,6 +127,21 @@ p { margin: 0; text-wrap: pretty; }
   pointer-events: none;
 }
 
+/* ---------- Touch feedback (press states on devices without :hover) ---------- */
+@media (hover: none) {
+  .btn:active { background: var(--ink); color: var(--bg); }
+  .btn-accent:active { background: var(--terra); border-color: var(--terra); color: var(--bg); }
+  .btn-ghost:active { background: var(--bg-soft); color: var(--ink); border-color: var(--ink); }
+  .itin-chip:not(.is-active):active,
+  .dash-tab:not(.is-active):active,
+  .region-btn:not(.is-active):active { border-color: var(--ink); color: var(--ink); }
+  .itin-card:active,
+  .teaser:active,
+  .analisi-card:active { transform: scale(0.99); }
+}
+/* neutralize the default grey tap flash (we provide our own :active feedback) */
+a, button, .btn, .itin-chip, .dash-tab, .region-btn { -webkit-tap-highlight-color: transparent; }
+
 /* visually hidden but accessible */
 .visually-hidden {
   position: absolute;
